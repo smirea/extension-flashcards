@@ -11,7 +11,6 @@ for (var lesson=start; lesson<=end; ++lesson) {
   var file = dir + lesson + '.txt';
   var str = fs.readFileSync(file);
   str = str.toString().trim();
-  str = str.replace(/!/g, ' ');
   str = str.replace(/^\s+$/gm, '');
 
   var arr = str.split('\n\n');
