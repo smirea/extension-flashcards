@@ -36,141 +36,21 @@ String.prototype.fuzzySearch = function (str, case_insensitive) {
 };
 
 /**
- * Creates an extended DOM element (or add the missing methods to an existing one)
- * Basically several jQuery-like home-made methods.
- * @param  {String|Node} type
+ * Returns the css properties of an element.
+ * Useful for javascript css toggle.
+ * @param  {jQuery} $elem
+ * @param  {Array<String>} properties
+ * @return {Object}
  */
-function elem (type) {
-  if (type === undefined || type === null) {
-    return null;
+function saveCSS ($elem, properties) {
+  properties = Array.isArray(properties) ? properties : [properties];
+  var css = {};
+
+  for (var i=0; i<properties.length; ++i) {
+    css[properties[i]] = $elem.css(properties[i]);
   }
 
-  var obj = type.nodeType === 1 ? type : document.createElement(type);
-
-  obj.append = function () {
-    for (var i=0; i<arguments.length; ++i) {
-      this.appendChild(this._convert_node(arguments[i]));
-    }
-    return this;
-  };
-
-  obj.attr = function (key, value) {
-    if (typeof key === 'object') {
-      for (var name in key) {
-        this.setAttribute(name, key[name]);
-      }
-      return this;
-    }
-    if (arguments.length === 1) {
-      return this.getAttribute(key);
-    }
-    this.setAttribute(key, value);
-    return this;
-  };
-
-  obj.addClass = function () {
-    for (var i=0; i<arguments.length; ++i) {
-      this.classList.add(arguments[i]);
-    }
-    return this;
-  };
-
-  obj.caret = function (start, end) {
-    if (arguments.length === 0) {
-      return this.getCaret();
-    }
-    return this.setCaret.apply(this, arguments);
-  };
-
-  obj.empty = function () {
-    while (this.hasChildNodes()) {
-      this.removeChild(this.lastChild);
-    }
-    return this;
-  };
-
-  obj.getCaret = function () {
-    var caret = 0;
-    if (document.selection) { // IE Support
-      this.focus();
-      var sel = document.selection.createRange();
-      sel.moveStart('character', -this.value.length);
-      caret = sel.text.length;
-    } else if (this.selectionStart || this.selectionStart == '0') { // Firefox support
-      caret = this.selectionEnd;
-    }
-    return caret;
-  };
-
-  obj.on = function (event_name, callback) {
-    this.addEventListener(event_name, callback, false);
-    return this;
-  };
-
-  obj.prepend = function () {
-    if (this.children.length === 0) {
-      return this.append.apply(this, arguments);
-    }
-    var prev = this.firstChild;
-    for (var i=0; i<arguments.length; ++i) {
-      var cur = this._convert_node(arguments[i]);
-      this.insertBefore(cur, prev);
-    }
-    return this;
-  };
-
-  obj.remove = function () {
-    this.parentNode.removeChild(this);
-    return this;
-  };
-
-  obj.removeClass = function () {
-    for (var i=0; i<arguments.length; ++i) {
-      this.classList.remove(arguments[i]);
-    }
-    return this;
-  };
-
-  obj.setCaret = function (begin, end) {
-    end = end !== undefined ? end : begin;
-    if(this.setSelectionRange) {
-      this.focus();
-      this.setSelectionRange(begin, end);
-    } else if (this.createTextRange) {
-      var range = this.createTextRange();
-      range.collapse(true);
-      range.moveEnd('character', begin);
-      range.moveStart('character', end);
-      range.select();
-    }
-    return this;
-  };
-
-  obj.toggleClass = function () {
-    for (var i=0; i<arguments.length; ++i) {
-      this.classList.toggle(arguments[i]);
-    }
-    return this;
-  };
-
-  obj.val = function (str) {
-    var name = this.nodeName.toLowerCase();
-    if (name != 'input' && name != 'textarea') {
-      return this;
-    }
-    var attribute = name == 'input' ? 'value' : 'innerHTML';
-    if (str === undefined) {
-      return this[attribute];
-    }
-    this[attribute] = str;
-    return this;
-  };
-
-  obj._convert_node = function (el) {
-    return typeof el == 'object' && el.nodeType ? el : document.createTextNode(el);
-  };
-
-  return obj;
+  return css;
 }
 
 /**

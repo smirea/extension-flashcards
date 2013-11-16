@@ -1,6 +1,6 @@
 
 // Press this to reveal a pannel.
-var hotkey = 'n';
+var hotkey = KEYS.N;
 // How long to display the notification.
 // If it is a falsy value, it will not disappear automatically.
 var time = 30;
@@ -14,15 +14,16 @@ var stoppetProgressBar = false;
 $(init);
 
 function init () {
-  addEvents();
-  port.post('getFlashcard', {callback:function (card) {
-    console.log(showFlashcard(card));
-  }});
+  getNewFlashcard();
+}
+
+function getNewFlashcard () {
+  port.post('getFlashcard', {callback:showFlashcard});
 }
 
 function showFlashcard (card) {
   revealIndex = 1;
-  stoppetProgressBar = false;
+  stoppetProgressBar = !time || time <= 0;
 
   $wrapper.remove();
   $wrapper = jqElement('div');
@@ -70,7 +71,6 @@ function showFlashcard (card) {
   }
   $wrapper.find('.jfc-phrase').html(phrase);
 
-
   // Close button.
   jqElement('a').
     attr('href', 'javascript:void(0)').
@@ -80,7 +80,7 @@ function showFlashcard (card) {
     on('click', function _close (event) {
       event.preventDefault();
       event.stopPropagation();
-      $wrapper.fadeOut('normal', $wrapper.remove.bind($wrapper));
+      $wrapper.data('closing', true).fadeOut('normal', $wrapper.remove.bind($wrapper));
     });
 
   // Only show the first element.
@@ -93,34 +93,53 @@ function showFlashcard (card) {
     hide().
     fadeIn('normal');
 
+  addEvents();
+
   return $wrapper;
 }
 
+function showNextHint (noClose) {
+  if (!stoppetProgressBar) {
+    $wrapper.find('.jfc-progress').stop();
+    $wrapper.find('.jfc-progressBar').fadeOut('slow');
+    stoppetProgressBar = true;
+    return;
+  }
+
+  if (!noClose && revealIndex >= revealOrder.length) {
+    $wrapper.find('.jfc-close').click();
+    return;
+  }
+
+  $wrapper.find('.jfc-' + revealOrder[revealIndex]).slideDown();
+  ++revealIndex;
+}
+
 function addEvents () {
-  $(document).on('keydown.jfc', function (event) {
+  $(document).off('keydown.jfc').on('keydown.jfc', function (event) {
     var $target = $(event.target);
 
-    if (
-      $target.is('input') || $target.is('textarea') ||
-      String.fromCharCode(event.keyCode).toLowerCase() != hotkey
-    ) {
+    if (event.keyCode != hotkey || $target.is('input') || $target.is('textarea')) {
       return;
     }
 
-    if (!stoppetProgressBar) {
-      $wrapper.find('.jfc-progress').stop();
-      $wrapper.find('.jfc-progressBar').fadeOut('slow');
-      stoppetProgressBar = true;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    if (!$wrapper.is(':visible') || $wrapper.data('hiding')) {
+      getNewFlashcard();
       return;
     }
 
-    if (revealIndex >= revealOrder.length) {
-      $wrapper.find('.jfc-close').click();
-      $(this).off('.jfc');
-      return;
-    }
+    showNextHint();
+  });
 
-    $wrapper.find('.jfc-' + revealOrder[revealIndex]).slideDown();
-    ++revealIndex;
+  $wrapper.on('mouseenter.jfc', function (event) { $wrapper.addClass('jfc-over'); });
+  $wrapper.on('mouseleave.jfc', function (event) { $wrapper.removeClass('jfc-over'); });
+  $wrapper.on('click.jfc', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    showNextHint(true);
   });
 }
