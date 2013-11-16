@@ -12,7 +12,7 @@ var PortWrapper = (function () {
       log: getLogger('log'),
       warn: getLogger('warn'),
       error: getLogger('error'),
-      info: getLogger('info')
+      info: getLogger('info'),
     });
 
     if (!port) {
@@ -32,6 +32,9 @@ var PortWrapper = (function () {
      *          and WILL NOT be valid for normal handlers
      */
     var protocolHandlers = {
+      '::getHandlers': function (message) {
+        message.callback(Object.keys(handlers), Object.keys(protocolHandlers));
+      },
       '::callback': function (message) {
         if (callbacks[message.id]) {
           callbacks[message.id].apply(that, message.arguments);
@@ -41,29 +44,37 @@ var PortWrapper = (function () {
                       'key of `' + message.id + '`'
           );
         }
-      }
+      },
     };
 
     var onMessageListener = function _onMessage (message) {
       if (!message.action) {
         that.warn('[PortWrapper] Message contains no action', message);
-      } else if(protocolHandlers[message.action]) {
-        protocolHandlers[message.action].apply(that, arguments);
-      } else if (!handlers[message.action]) {
-        that.warn('[PortWrapper] No handlers defined for: ', message.action);
-      } else {
-        if (message['::callback']) {
-          var callbackData = message['::callback'];
-          delete message['::callback'];
-          message.callback = function () {
-            that.post('::callback', {
-              id: callbackData.id,
-              arguments: copyArray(arguments)
-            });
-          };
-        }
-        handlers[message.action].apply(that, arguments);
+        return;
       }
+
+      if (message['::callback']) {
+        var callbackData = message['::callback'];
+        delete message['::callback'];
+        message.callback = function () {
+          that.post('::callback', {
+            id: callbackData.id,
+            arguments: copyArray(arguments)
+          });
+        };
+      }
+
+      if(protocolHandlers[message.action]) {
+        protocolHandlers[message.action].apply(that, arguments);
+        return;
+      }
+
+      if (!handlers[message.action]) {
+        that.warn('[PortWrapper] No handlers defined for: ', message.action);
+        return;
+      }
+
+      handlers[message.action].apply(that, arguments);
     };
 
     extendObject(that, {
@@ -111,12 +122,14 @@ var PortWrapper = (function () {
         if (typeof action !== 'string') {
           that.warn('[PortWrapper.send] Invalid action', arguments);
           return null;
-        } else if (allowedPostHandlers &&  // if using allowed post handlers
-                  !/^::/.test(action) &&  // if it is not a protocol message
-                  !allowedPostHandlers[action]  // does not have a handler
+        }
+
+        if (allowedPostHandlers &&  // if using allowed post handlers
+            !/^::/.test(action) &&  // if it is not a protocol message
+            !allowedPostHandlers[action]  // does not have a handler
         ) {
-          that.warn('[PortWrapper.send] Receiver does not have a handler ' +
-                          'for `' + action + '`', allowedPostHandlers
+          that.warn('[PortWrapper.send] Receiver does not have a handler for `%s`, allowed: %s ',
+                    action, Object.keys(allowedPostHandlers).join(', ')
           );
           return null;
         }
@@ -133,6 +146,7 @@ var PortWrapper = (function () {
           };
           delete message.callback;
         }
+
         port.postMessage(message);
       },
       postMessage: function () {
@@ -163,6 +177,9 @@ var PortWrapper = (function () {
 
     // setup custom messaging system
     that.getEvent('onMessage').addListener(onMessageListener);
+    that.post('::getHandlers', {callback: function (normal, protocol) {
+      that.setAllowedPostHandlers(normal);
+    }});
   };
 
   function getLogger (type) {
