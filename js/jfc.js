@@ -1,36 +1,44 @@
 
-// Press this to reveal a pannel.
+// Don't cache more than this number of cards in the deck
+var MAX_DECK_SIZE = 69;
+
+// Press this to reveal a panel.
 var hotkey = KEYS.N;
+
+var port = null;
 
 var revealIndex = 0;
 var $wrapper = $();
 var stoppetProgressBar = false;
 
 var options = null;
+// While cards in the deck, use the deck.
+var deck = [];
 
 $(init);
 
 function init () {
-  getOptions(getNewFlashcard);
+  clear();
+  initPort();
+  getOptions();
 }
 
 function getOptions (callback) {
   port.post('getOptions', {
     callback: function (opt) {
       options = opt;
-      console.log(JSON.stringify(options, null, 2));
       (callback || function () {})(opt);
     }
   });
 }
 
-function getNewFlashcard () {
-  port.post('getFlashcard', {callback:showFlashcard});
+function getFlashcardSet () {
+  port.post('getFlashcardSet');
 }
 
 function showFlashcard (card) {
   revealIndex = 1;
-  stoppetProgressBar = !options.progressTime || options.progressTime <= 0;
+  stoppetProgressBar = options.progressDisabled || !options.progressTime || options.progressTime <= 0;
 
   $wrapper.remove();
   $wrapper = jqElement('div');
@@ -74,6 +82,7 @@ function showFlashcard (card) {
   }
 
   // Highlight connectors in phrase.
+  var $name = $wrapper.find('.jfc-phrase .jfc-name').remove();
   var phrase = $wrapper.find('.jfc-phrase').html();
   var connectors = phrase.match(/([A-Z]+\s*)+/g).sort(function (a, b) {
     return a.length < b.length;
@@ -84,7 +93,7 @@ function showFlashcard (card) {
       '<span class="jfc-connector">' + connectors[i] + '</span>'
     );
   }
-  $wrapper.find('.jfc-phrase').html(phrase);
+  $wrapper.find('.jfc-phrase').html(phrase).prepend($name);
 
   // Close button.
   jqElement('a').
@@ -96,6 +105,9 @@ function showFlashcard (card) {
       event.preventDefault();
       event.stopPropagation();
       $wrapper.data('closing', true).fadeOut('normal', $wrapper.remove.bind($wrapper));
+      if (deck.length > 0) {
+        showFlashcard(deck.pop());
+      }
     });
 
   // Only show the first element.
@@ -143,7 +155,7 @@ function addEvents () {
     event.stopImmediatePropagation();
 
     if (!$wrapper.is(':visible') || $wrapper.data('hiding')) {
-      getNewFlashcard();
+      getFlashcardSet();
       return;
     }
 
@@ -156,5 +168,34 @@ function addEvents () {
     event.preventDefault();
     event.stopPropagation();
     showNextHint(true);
+  });
+}
+
+function clear () {
+  $('.jfc-flashcard').each(function () {
+    $(this).find('.jfc-close')[0].click();
+    $(this).remove();
+  });
+}
+
+function initPort () {
+  var handlers = {
+    cardDeck: function _flashcard (message) {
+      var max = Math.max(0, MAX_DECK_SIZE - deck.length);
+      deck = (message.cards || []).slice(0, max).concat(deck);
+      showFlashcard(deck.pop());
+    },
+    // Utils.
+    echo : function _echoClient (message) {
+      console.log('[PORT]', message.content);
+    }
+  };
+
+  port = new PortWrapper(chrome.extension.connect());
+
+  port.addHandlers(handlers);
+
+  port.disconnect(function _onDisconnect (event) {
+    console.warn('[PORT] disconnected');
   });
 }

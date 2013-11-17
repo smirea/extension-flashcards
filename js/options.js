@@ -38,14 +38,14 @@ function set_layout () {
 
   addOption(
     'General',
-    'A general set of options',
+    'A general set of options.',
     $().add(createCheckbox(
       'enabled',
       'Enable this extension - aka show cards once in a while.'
     )).add(createSlider(
       'minDelay',
       'Minimum delay (in minutes) between every set of flashcards. ',
-      {value:20, range:'min', min:0, max:2 * 60, step:1,}
+      {value:20, range:'min', min:1, max:2 * 60, step:1,}
     ).append(jqElement('output').html('m'))).add(createSlider(
       'setSize',
       'Number of flashcards to show in a set (one after the other)',
@@ -58,15 +58,15 @@ function set_layout () {
     'Configure the time flashcards are shown and how the progressbar works.',
     $().add(createCheckbox(
         'progressDisabled',
-        'Disable the timer entirely. Flashcards won\'t disappear unless manually closed'
+        'Disable the timer entirely. Flashcards won\'t disappear unless manually closed.'
+      )).add(createCheckbox(
+        'progressHoverHide',
+        'Clear the progressbar/timer when you move your mouse over the flashcard.'
       )).add(createSlider(
         'progressTime',
         'Time (in seconds) it takes before the flashcard disappears.',
         {value:5, range:'min', min:5, max:120, step:5} ).append(jqElement('output').html('s'))
-      ).add(createCheckbox(
-        'progressHoverHide',
-        'Clear the progressbar/timer when you move your mouse over the flashcard.'
-      ))
+      )
   ).addClass('display-block');
 
   // Future-proofing: get all keys used in the cards, excluding the exclude.
@@ -78,13 +78,13 @@ function set_layout () {
 
   addOption(
      'Layout',
-    'The order of all the elements in the flash card. <br />Drag stuff around to re-order',
+    'The order of all the elements in the flash card. <br />Drag stuff around to re-order.',
     createList('layout', keys, card)
   );
 
   addOption(
     'Display Order',
-    'The order in which each of the elements (hints) will be displayed. <br />By default, only the first element in this list is visible initially',
+    'The order in which each of the elements (hints) will be displayed. <br />By default, only the first element in this list is visible initially.',
     createList('displayOrder', keys, card)
   );
 
@@ -417,9 +417,6 @@ function saveOptions () {
 function init_port () {
   var handlers = {
     // Utils.
-    accept: function _acceptedConnection (message) {
-      console.info('[PORT] Connection accepted');
-    },
     echo : function _echoClient (message) {
       console.log('[PORT]', message.content);
     }
