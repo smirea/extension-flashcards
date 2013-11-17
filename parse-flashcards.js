@@ -61,7 +61,7 @@ fs.writeFileSync('flashcards.json', JSON.stringify(cards, null, 2));
 
 function flashcard (lesson, en, jp, story, phrase) {
   return {
-    category: 'Lesson ' + lesson,
+    category: 'JTA - Lesson ' + lesson,
     English: en,
     Japanese: jp,
     story: story,
