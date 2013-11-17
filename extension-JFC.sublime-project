@@ -9,6 +9,7 @@
       ],
       "folder_exclude_patterns": [
         "node_modules",
+        "jquery-ui",
       ]
     }
   ],
