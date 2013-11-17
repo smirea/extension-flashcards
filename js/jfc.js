@@ -1,20 +1,27 @@
 
 // Press this to reveal a pannel.
 var hotkey = KEYS.N;
-// How long to display the notification.
-// If it is a falsy value, it will not disappear automatically.
-var time = 30;
-var displayOrder = 'English Japanese story phrase'.split(' ');
-var revealOrder = 'English story phrase Japanese'.split(' ');
 
 var revealIndex = 0;
 var $wrapper = $();
 var stoppetProgressBar = false;
 
+var options = null;
+
 $(init);
 
 function init () {
-  getNewFlashcard();
+  getOptions(getNewFlashcard);
+}
+
+function getOptions (callback) {
+  port.post('getOptions', {
+    callback: function (opt) {
+      options = opt;
+      console.log(JSON.stringify(options, null, 2));
+      (callback || function () {})(opt);
+    }
+  });
 }
 
 function getNewFlashcard () {
@@ -23,12 +30,12 @@ function getNewFlashcard () {
 
 function showFlashcard (card) {
   revealIndex = 1;
-  stoppetProgressBar = !time || time <= 0;
+  stoppetProgressBar = !options.progressTime || options.progressTime <= 0;
 
   $wrapper.remove();
   $wrapper = jqElement('div');
   var get = function (name) {
-    var disp = displayOrder.indexOf(name) > -1;
+    var disp = options.layout.indexOf(name) > -1;
     return jqElement('div').
             addClass('jfc-' + name).
             addClass(disp ? 'jfc-element' : '').
@@ -36,25 +43,33 @@ function showFlashcard (card) {
                   (card[name] !== undefined ? card[name] : '') );
   };
 
-  if (time) {
+  // Add progressbar
+  if (!stoppetProgressBar) {
     jqElement('div').
       addClass('jfc-progressBar').
       appendTo($wrapper).
       append(
         jqElement('div').addClass('jfc-progress').animate({
           width: '100%'
-        }, time * 1000, 'linear', function () {
+        }, options.progressTime * 1000, 'linear', function () {
           $wrapper.find('.jfc-close')[0].click();
         })
       );
+
+    if (options.progressHoverHide) {
+      $wrapper.one('mouseenter', function (event) {
+        if (stoppetProgressBar) { return; }
+        showNextHint(true);
+      });
+    }
   }
 
-  for (var i=0; i<displayOrder.length; ++i) {
-    $wrapper.append(get(displayOrder[i]));
+  for (var i=0; i<options.layout.length; ++i) {
+    $wrapper.append(get(options.layout[i]));
   }
 
   for (var key in card) {
-    if (displayOrder.indexOf(key) > -1) { continue; }
+    if (options.layout.indexOf(key) > -1) { continue; }
     $wrapper.append(get(key));
   }
 
@@ -84,7 +99,7 @@ function showFlashcard (card) {
     });
 
   // Only show the first element.
-  $wrapper.find('.jfc-element').hide().filter('.jfc-' + revealOrder[0]).show();
+  $wrapper.find('.jfc-element').hide().filter('.jfc-' + options.displayOrder[0]).show();
 
   // Show.
   $wrapper.
@@ -106,12 +121,12 @@ function showNextHint (noClose) {
     return;
   }
 
-  if (!noClose && revealIndex >= revealOrder.length) {
+  if (!noClose && revealIndex >= options.displayOrder.length) {
     $wrapper.find('.jfc-close').click();
     return;
   }
 
-  $wrapper.find('.jfc-' + revealOrder[revealIndex]).slideDown();
+  $wrapper.find('.jfc-' + options.displayOrder[revealIndex]).slideDown();
   ++revealIndex;
 }
 

@@ -3,6 +3,7 @@
   position: fixed;
   top: 10px;
   right: 10px;
+  z-index: 100000;
   -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
   border: 1px solid #999;
   background: #fff;
@@ -11,7 +12,7 @@
   padding: 0;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 10pt;
-  -webkit-perspective: 800;
+  -webkit-transition: border-color 0.4s ease-in-out;
 }
 
 .jfc-flashcard.jfc-over {
@@ -57,6 +58,7 @@
 .jfc-category, .jfc-hint {
   -webkit-box-sizing: border-box;
   position: absolute;
+  z-index: -1;
   right: -1px;
   top: 100%;
   -webkit-box-shadow: inherit;
