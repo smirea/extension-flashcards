@@ -1,0 +1,285 @@
+
+* {
+  -webkit-box-sizing: border-box;
+}
+
+a {
+  outline: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+body {
+  background: #eef;
+  padding: 0;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 10pt;
+}
+
+#main {
+  border: 1px solid #aaa;
+  background: #fff;
+  margin: 0 auto;
+  padding: 0;
+  width: 760px;
+}
+
+footer {
+  margin: 0 auto;
+  padding: 5px;
+  width: 760px;
+  text-align: right;
+  color: #999;
+}
+
+footer a {
+  color: #666;
+}
+
+.option {
+  display: table;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.option + .option {
+  border-top: 1px solid #ddd;
+}
+
+.option > * {
+  display: table-cell;
+}
+
+.option.display-block label {
+  display: block;
+  padding: 10px 0;
+}
+
+.option.display-block label + label {
+  border-top: 1px solid #ddd;;
+}
+
+.details {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.details.one-column {
+  display: block;
+}
+
+.details:not(.one-column) {
+  width: 200px;
+}
+
+.details .title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.details .description {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.content {
+  padding: 10px;
+}
+
+.details.one-column + .content {
+  padding-top: 0;
+}
+
+.checkbox {
+  display: block;
+}
+
+.checkbox input[type="checkbox"] {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.card-list-title {
+  display: block;
+  border-bottom: 1px solid #ddd;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-indent: 10px;
+  cursor: pointer;
+}
+
+.card-list-title input[type="checkbox"] {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  margin-right: 10px;
+}
+
+.card-list-title:first-of-type {
+  margin-top: 0;
+}
+
+.card-list {
+
+}
+
+.card-list li {
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  margin: 3px;
+}
+
+.card-list .block {
+  display: inline-block;
+  padding: 10px;
+}
+
+.card-list .block + .block {
+  border-left: 1px solid #ddd;
+}
+
+.card-list .cardCheckbox {
+  width: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cardCheckbox {
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.block + .cardCheckbox {
+  border-left: 1px solid #ddd;
+}
+
+.cardCheckbox:before {
+  position: absolute;
+  top: 5px;
+  left: 11px;
+  font-size: 16pt;
+}
+
+.cardCheckbox:after {
+  content: ' ';
+}
+
+.cardCheckbox:not(.checked) {
+  background: #ff6666;
+}
+
+.cardCheckbox:not(.checked):before {
+  content: '×';
+}
+
+.cardCheckbox.checked {
+  background: lightgreen;
+}
+
+.cardCheckbox.checked:before {
+  content: '✔';
+}
+
+.cardCheckbox input[type="checkbox"] {
+  display: none;
+}
+
+.sortable {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  overflow: hidden;
+}
+
+.sortable > li {
+  position: relative;
+  border-radius: 2px;
+  border: 1px solid #aaa;
+  background: #fafafa;
+  margin: 3px 0;
+  padding: 10px;
+  width: 100%;
+  list-style-type: none;
+  text-indent: 5px;
+  cursor: move;
+}
+
+.sortable .utf8-icon {
+  position: absolute;
+  top: 7px;
+  left: 0px;
+  display: inline-block;
+  font-size: 16pt;
+  opacity: 0.5;
+}
+
+.sortable .key {
+  display: inline-block;
+  margin-right: 5px;
+  font-weight: bold;
+  color: #0080ff;
+}
+
+.sortable .value {
+  font-size: 0.8em;
+}
+
+.sort-placeholder {
+  background: #0080ff!important;
+}
+
+.ui-slider {
+  display: inline-block;
+  width: 400px;
+  margin-right: 5px;
+
+}
+
+output {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  border: 0;
+  margin: 0 0 0 5px;
+  font-family: inherit;
+  font-size: 8pt;
+  text-align: left;
+}
+
+output + output, input + output {
+  margin-left: 2px;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+
+* html .clearfix {
+  height: 1%;
+}

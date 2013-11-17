@@ -36,6 +36,48 @@ String.prototype.fuzzySearch = function (str, case_insensitive) {
 };
 
 /**
+ * localStorage enhancer. Auto JSON.stringify and JSON.encodes all the elements.
+ * @type {Object}
+ */
+var ls = {
+  /**
+   * Set a key. Auto JSON.stringify
+   * @param {String|Object} key  Set multiple keys at once by passing an object as a key and no value.
+   * @param {Mixed} value Optional if the first argument is an Object.
+   * @return {Object} chainable
+   */
+  set: function (key, value) {
+    if (arguments.length === 1 && typeof key == 'object' && key !== null) {
+      for (var name in key) { ls.set(name, key[name]); }
+    } else {
+      localStorage[key] = JSON.stringify(value);
+    }
+    return this;
+  },
+  /**
+   * Get a key from localStorage. Auto JSON.parse
+   * @param  {String} key
+   * @param  {Mixed} defaultValue Optional. A default value to return if the key does not exist.
+   * @return {Mixed}
+   */
+  get: function (key, defaultValue) {
+    if (!(key in localStorage)) {
+      return defaultValue;
+    }
+    try {
+      return JSON.parse(localStorage[key]);
+    } catch (ex) {
+      console.warn('Never use plain localStorage to set shit!\nOtherwise this happens: ' + ex, ex.stack);
+      return defaultValue;
+    }
+  },
+};
+
+function hashFlashcard (card) {
+  return (card.category || '') + '|' + (card.Japanese || '');
+}
+
+/**
  * Returns the css properties of an element.
  * Useful for javascript css toggle.
  * @param  {jQuery} $elem
@@ -60,6 +102,16 @@ function saveCSS ($elem, properties) {
  */
 function jqElement (type) {
   return $(document.createElement(type));
+}
+
+/**
+ * Converts an array-like object to an array.
+ * Mainly used for converting arguments to actual arrays.
+ * @param  {Object|Array} arr
+ * @return {Array}
+ */
+function cloneArray (arr) {
+  return Array.prototype.slice.call(arr);
 }
 
 /**

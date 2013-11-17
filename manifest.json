@@ -11,12 +11,13 @@
   "background": {
     "page": "background.html"
   },
+  "options_page": "options.html",
   "browser_action": {
     "default_icon": {
       "38": "images/logo-plain-256.png"
     },
     "default_title": "Japanese Flashcards",
-    "default_popup": "popup.html"
+    "default_popup": "options.html"
   },
   "permissions": [
     "tabs",

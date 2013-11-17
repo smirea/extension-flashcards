@@ -19,10 +19,42 @@ var dependencies = [
   dirs.js + 'jfc.js',
 ];
 
+// Defaults for all the options that can be configured.
+var defaultOptions = {
+  enabled: true,
+  minDelay: 30,
+  setSize: 3,
+  progressDisabled: false,
+  progressTime: 15,
+  progressHoverHide: true,
+  exclude: {},
+  layout: ('Japanese English story phrase').split(' '),
+  displayOrder: ('English Japanese phrase story').split(' '),
+};
+
+// Make sure all the options have their defaults.
+var options = ls.get('options', {});
+for (var key in defaultOptions) {
+  if (key in options) { continue; }
+  options[key] = defaultOptions[key];
+}
+ls.set('options', options);
+
 // All handlers a port can post to. Anything else will raise an Exception.
 var handlers = {
+  refreshOptions: function _refreshOptions () {
+    options = ls.get('options');
+  },
+
+  getOptions: function _getOptions (message) {
+    message.callback(ls.get('options'));
+  },
+
   getFlashcard: function _getFlashcard (message) {
-    var card = flashcards[Math.floor(Math.random() * flashcards.length)];
+    var available = flashcards.filter(function (c) {
+      return !(hashFlashcard(c) in options.exclude);
+    });
+    var card = available[Math.floor(Math.random() * available.length)];
     message.callback(card);
     history.push(card);
   },
@@ -32,7 +64,6 @@ var handlers = {
   },
 
   // Utils.
-
   echo: function _echoServer (message) {
     this.post('echo', {content: 'ECHO: ' + message.content});
   },
@@ -70,6 +101,14 @@ var init_ports = (function (scope) {
 
   return function (handlers) {
     chrome.extension.onConnect.addListener(function _portOnConnect (incomingPort) {
+      // Disregard option sockets
+      if (incomingPort.name == 'options') {
+        var port  = new PortWrapper(incomingPort);
+        port.addHandlers(handlers);
+        port.post('accept');
+        return;
+      }
+
       var port  = new PortWrapper(incomingPort);
       if (ports[port.sender.tab.id]) {
         console.info('[PORT] Updating port for tab:', port.sender.tab.id);
@@ -77,8 +116,8 @@ var init_ports = (function (scope) {
         console.info('[PORT] Initialized for tab:', port.sender.tab.id);
       }
       ports[port.sender.tab.id] = port;
-      port.post('accept');
       port.addHandlers(handlers);
+      port.post('accept');
       port.disconnect(function _disconnect () {
         delete ports[port.sender.tab.id];
       });
@@ -102,6 +141,7 @@ function loadData (url, callback) {
   return $.getJSON(url, function (data) {
     callback(data, url);
     flashcards = data;
+    ls.set('flashcards', flashcards);
   });
 }
 
