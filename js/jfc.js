@@ -189,6 +189,8 @@ function addEvents () {
 }
 
 function clear () {
+  console.log(window.jfc_init, window.jfc_unbind);
+  if (window.jfc_init && window.jfc_unbind) { window.jfc_unbind(); }
   $('.jfc-flashcard').each(function () {
     $(this).find('.jfc-close')[0].click();
     $(this).remove();
