@@ -6,13 +6,24 @@
  */
 
 var PortWrapper = (function () {
-  return function PortWrapper (port) {
+
+  var defaultOptions = {
+    // Which of the log functions to use. Default = ALL
+    // 1 - error, 2 - warn, 3 - info, 4 - log
+    logLevel: 4,
+  };
+
+  return function PortWrapper (port, options) {
+    options = options || {};
+
+    var opt = extendObject({}, defaultOptions, options);
     var that = this;
+
     extendObject(that, {
-      log: getLogger('log'),
-      warn: getLogger('warn'),
-      error: getLogger('error'),
-      info: getLogger('info'),
+      error:  opt.logLevel && opt.logLevel >= 1 ? getLogger('error') : function () {},
+      warn:   opt.logLevel && opt.logLevel >= 2 ? getLogger('warn') : function () {},
+      info:   opt.logLevel && opt.logLevel >= 3 ? getLogger('info') : function () {},
+      log:    opt.logLevel && opt.logLevel >= 4 ? getLogger('log') : function () {},
     });
 
     if (!port) {
@@ -190,13 +201,24 @@ var PortWrapper = (function () {
     };
   }
 
+  /**
+   * Extend an object by copying the attributes of other multiple objects into it.
+   * @param  {Object} obj
+   * @param  {Object} attributes1, attributes2 ....
+   * @return {Object} Returns back the original object with the alterations.
+   */
   function extendObject (obj, attributes) {
     if (obj === null || typeof obj !== 'object') {
       return obj;
     }
-    for (var name in attributes) {
-      obj[name] = attributes[name];
+
+    for (var i=1; i<arguments.length; ++i) {
+      for (var name in arguments[i]) {
+        obj[name] = arguments[i][name];
+      }
     }
+
+    return obj;
   }
 
   function copyObject (obj) {

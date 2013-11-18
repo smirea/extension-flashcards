@@ -1,9 +1,26 @@
 
-// Don't cache more than this number of cards in the deck
+// Don't cache more than this number of cards in the deck.
 var MAX_DECK_SIZE = 69;
+
+// If a port disconnects, how many times to retry reconnecting.
+var MAX_RETRIES = 10;
+
+// Timeout between every retry.
+var RETRY_TIMEOUT = 1 * 1000;
 
 // Press this to reveal a panel.
 var hotkey = KEYS.N;
+
+// Which of the log functions to use. Default = ALL
+// 1 - error, 2 - warn, 3 - info, 4 - log
+var logLevel = 4;
+
+var logger = {
+  error:  logLevel && logLevel >= 1 ? console.error.bind(console) : function () {},
+  warn:   logLevel && logLevel >= 2 ? console.warn.bind(console) : function () {},
+  info:   logLevel && logLevel >= 3 ? console.info.bind(console) : function () {},
+  log:    logLevel && logLevel >= 4 ? console.log.bind(console) : function () {},
+};
 
 var port = null;
 
@@ -178,24 +195,51 @@ function clear () {
   });
 }
 
-function initPort () {
+function initPort (retryCount) {
+  // To initiate a retry sequence, start from retryCount = 1;
+  retryCount = retryCount || 0;
+
   var handlers = {
+    refreshOptions: function _refreshOptions (message) {
+      getOptions();
+    },
+
     cardDeck: function _flashcard (message) {
       var max = Math.max(0, MAX_DECK_SIZE - deck.length);
       deck = (message.cards || []).slice(0, max).concat(deck);
       showFlashcard(deck.pop());
     },
+
     // Utils.
     echo : function _echoClient (message) {
-      console.log('[PORT]', message.content);
+      logger.log('[PORT]', message.content);
     }
   };
 
-  port = new PortWrapper(chrome.extension.connect());
+  if (retryCount > 0) {
+    if (retryCount > MAX_RETRIES) {
+      logger.warn('[PORT] Failed to connect, giving up.');
+    } else {
+      logger.info('[PORT] Attempting reconnection %s/%s', retryCount, MAX_RETRIES);
+    }
+  }
 
-  port.addHandlers(handlers);
+  try {
+    port = new PortWrapper(chrome.extension.connect(), {
+      logLevel: logLevel
+    });
 
-  port.disconnect(function _onDisconnect (event) {
-    console.warn('[PORT] disconnected');
-  });
+    port.addHandlers(handlers);
+
+    port.disconnect(function _onDisconnect (event) {
+      logger.warn('[PORT] disconnected');
+      initPort(1);
+    });
+
+    if (retryCount > 0) {
+      logger.info('[PORT] Reconnection Succeeded!');
+    }
+  } catch (ex) {
+    initPort(retryCount + 1);
+  }
 }
