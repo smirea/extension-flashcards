@@ -79,10 +79,14 @@ function showFlashcard (card) {
       addClass('jfc-progressBar').
       appendTo($wrapper).
       append(
-        jqElement('div').addClass('jfc-progress').animate({
+        jqElement('div').data('target', $wrapper).addClass('jfc-progress').animate({
           width: '100%'
         }, options.progressTime * 1000, 'linear', function () {
-          $wrapper.find('.jfc-close')[0].click();
+          var $target = $(this).data('target');
+          if (!$target || !$target.is(':visible')) {
+            return;
+          }
+          $target.find('.jfc-close')[0].click();
         })
       );
 
@@ -126,7 +130,7 @@ function showFlashcard (card) {
     on('click', function _close (event) {
       event.preventDefault();
       event.stopPropagation();
-      $wrapper.data('closing', true).fadeOut('normal', $wrapper.remove.bind($wrapper));
+      $wrapper.remove();
       if (deck.length > 0) {
         showFlashcard(deck.pop());
       }
@@ -150,7 +154,7 @@ function showFlashcard (card) {
 function showNextHint (noClose) {
   if (!stoppetProgressBar) {
     $wrapper.find('.jfc-progress').stop();
-    $wrapper.find('.jfc-progressBar').fadeOut('slow');
+    $wrapper.find('.jfc-progressBar').fadeOut();
     stoppetProgressBar = true;
     return;
   }
