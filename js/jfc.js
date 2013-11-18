@@ -168,7 +168,8 @@ function addEvents () {
   $(document).off('keydown.jfc').on('keydown.jfc', function (event) {
     var $target = $(event.target);
 
-    if ($target.is('input') || $target.is('textarea')) {
+    if ($target.is('input') || $target.is('textarea') ||
+        $target.parents().add($target).is('[contenteditable="true"]')) {
       return;
     }
 
