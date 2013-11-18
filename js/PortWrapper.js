@@ -100,7 +100,7 @@ var PortWrapper = (function () {
         }
         for (var name in map) {
           if (/^::/.test(name)) {
-            console.log('[PortWrapper.addHandlers] The prefix `::` is reserved'+
+            that.info('[PortWrapper.addHandlers] The prefix `::` is reserved' +
                           ' for protocol communication. Rename your handler'
             );
             return null;
