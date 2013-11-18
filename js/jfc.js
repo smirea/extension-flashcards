@@ -9,7 +9,12 @@ var MAX_RETRIES = 10;
 var RETRY_TIMEOUT = 1 * 1000;
 
 // Press this to reveal a panel.
-var hotkey = KEYS.N;
+var hotkeys = {
+  // Shows next hint, clears the flashcard and retries new flashcard from cache or a new set.
+  next: KEYS.N,
+  // Clears the whole set of flashcards.
+  clear: KEYS.P,
+};
 
 // Which of the log functions to use. Default = ALL
 // 1 - error, 2 - warn, 3 - info, 4 - log
@@ -163,20 +168,28 @@ function addEvents () {
   $(document).off('keydown.jfc').on('keydown.jfc', function (event) {
     var $target = $(event.target);
 
-    if (event.keyCode != hotkey || $target.is('input') || $target.is('textarea')) {
+    if ($target.is('input') || $target.is('textarea')) {
       return;
+    }
+
+    switch (event.keyCode) {
+      case hotkeys.next:
+        if (!$wrapper.is(':visible') || $wrapper.data('hiding')) {
+          getFlashcardSet();
+          return;
+        }
+
+        showNextHint();
+        break;
+      case hotkeys.clear: clear(); break;
+      default: return;
     }
 
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
 
-    if (!$wrapper.is(':visible') || $wrapper.data('hiding')) {
-      getFlashcardSet();
-      return;
-    }
 
-    showNextHint();
   });
 
   $wrapper.on('mouseenter.jfc', function (event) { $wrapper.addClass('jfc-over'); });
@@ -188,9 +201,13 @@ function addEvents () {
   });
 }
 
+/**
+ * Unbinds global hotkeys and removes all flashcards.
+ * @return {[type]} [description]
+ */
 function clear () {
-  console.log(window.jfc_init, window.jfc_unbind);
   if (window.jfc_init && window.jfc_unbind) { window.jfc_unbind(); }
+  deck = [];
   $('.jfc-flashcard').each(function () {
     $(this).find('.jfc-close')[0].click();
     $(this).remove();
