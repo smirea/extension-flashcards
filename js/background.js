@@ -50,6 +50,9 @@ var handlers = {
   refreshOptions: function _refreshOptions () {
     optionsChanged(options, ls.get('options'));
     options = ls.get('options');
+    for (var tabId in ports) {
+      ports[tabId].post('refreshOptions');
+    }
   },
 
   getOptions: function _getOptions (message) {
@@ -172,7 +175,7 @@ function init_global_hotkeys () {
     sendResponse();
     if (!sender.tab) { return; }
     switch (request) {
-      case 'send-card': sendFlashcards(1); break;
+      case 'send-card': sendFlashcards(); break;
       default:
         console.warn('Unknown request type:', request, sender);
     }
