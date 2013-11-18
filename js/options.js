@@ -68,7 +68,7 @@ function set_layout () {
       )).add(createSlider(
         'progressTime',
         'Time (in seconds) it takes before the flashcard disappears.',
-        {value:5, range:'min', min:5, max:120, step:5} ).append(jqElement('output').html('s'))
+        {value:10, range:'min', min:1, max:120, step:1} ).append(jqElement('output').html('s'))
       )
   ).addClass('display-block');
 
