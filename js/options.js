@@ -42,6 +42,9 @@ function set_layout () {
     $().add(createCheckbox(
       'enabled',
       'Enable this extension - aka show cards once in a while.'
+    )).add(createCheckbox(
+      'disableGlobalHotkeys',
+      'Disable global hotkeys (NOT RECOMMENDED, requires restart)'
     )).add(createSlider(
       'minDelay',
       'Minimum delay (in minutes) between every set of flashcards. ',

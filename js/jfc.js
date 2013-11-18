@@ -84,7 +84,7 @@ function showFlashcard (card) {
   // Highlight connectors in phrase.
   var $name = $wrapper.find('.jfc-phrase .jfc-name').remove();
   var phrase = $wrapper.find('.jfc-phrase').html();
-  var connectors = phrase.match(/([A-Z]+\s*)+/g).sort(function (a, b) {
+  var connectors = phrase.match(/([A-Z]+,?\s*)+/g).sort(function (a, b) {
     return a.length < b.length;
   }).slice(0, 2);
   for (var i=0; i<connectors.length; ++i) {

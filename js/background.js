@@ -25,6 +25,7 @@ var dependencies = [
 // Defaults for all the options that can be configured.
 var defaultOptions = {
   enabled: true,
+  disableGlobalHotkeys: false,
   minDelay: 30,
   setSize: 3,
   progressDisabled: false,
@@ -128,13 +129,13 @@ function sendFlashcards (maxCards) {
 }
 
 function optionsChanged (old) {
-
+  //TODO: me
 }
 
 function init () {
   loadData();
-  init_global_hotkeys();
   init_ports(handlers);
+  if (!options.disableGlobalHotkeys) { init_global_hotkeys(); }
 }
 
 /**
