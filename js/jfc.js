@@ -179,14 +179,19 @@ function addEvents () {
 
     switch (event.keyCode) {
       case hotkeys.next:
-        if (!$wrapper.is(':visible') || $wrapper.data('hiding')) {
+        if (!$wrapper.is(':visible')) {
           getFlashcardSet();
           return;
         }
 
         showNextHint();
         break;
-      case hotkeys.clear: clear(); break;
+      case hotkeys.clear:
+        if (!$wrapper.is(':visible')) {
+          return;
+        }
+        clear();
+        break;
       default: return;
     }
 
