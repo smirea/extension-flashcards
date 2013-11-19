@@ -184,11 +184,12 @@ footer a {
 }
 
 .cardCheckbox.checked {
-  background: lightgreen;
+  background: #338aff;
 }
 
 .cardCheckbox.checked:before {
   content: '✔';
+  color: #fff;
 }
 
 .cardCheckbox input[type="checkbox"] {
@@ -245,7 +246,10 @@ footer a {
   display: inline-block;
   width: 400px;
   margin-right: 5px;
+}
 
+.ui-slider-range.ui-widget-header {
+  background: #6eb0ff;
 }
 
 output {
