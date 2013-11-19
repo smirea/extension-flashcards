@@ -33,7 +33,8 @@ var defaultOptions = {
   progressHoverHide: true,
   exclude: {},
   layout: ('Romaji English story phrase').split(' '),
-  displayOrder: ('English Romaji phrase story').split(' '),
+  layoutDisabled: ('Katakana Hiragana').split(' '),
+  displayOrder: ('Katakana Hiragana Romaji story phrase English').split(' '),
 };
 
 // Make sure all the options have their defaults.
@@ -228,7 +229,9 @@ function loadData (url, callback) {
     callback(data, url);
     flashcards = data;
     ls.set('flashcards', flashcards);
-  });
+  }).fail(function( jqxhr, textStatus, error ) {
+    console.error( "Failed to get data (%s): \n  %s\n  %s", url, textStatus, error.toString());
+  })
 }
 
 /**

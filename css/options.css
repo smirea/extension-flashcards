@@ -9,12 +9,12 @@ a {
 
 ul {
   padding: 0;
-  margin: 0;
+   margin: 0;
   list-style-type: none;
 }
 
 body {
-  background: #eef;
+  background: #e0edff;
   padding: 0;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 10pt;
@@ -89,6 +89,15 @@ footer a {
 
 .content {
   padding: 10px;
+}
+
+.option.name-layout .content {
+  display: table-cell;
+}
+
+.option.name-layout .content > * {
+  vertical-align: top;
+  height: 100%;
 }
 
 .details.one-column + .content {
@@ -202,8 +211,21 @@ footer a {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 300px;
+  width: 260px;
   overflow: hidden;
+}
+
+.sortable + .sortable {
+  margin-left: 10px;
+}
+
+.sortable .list-title {
+  display: inline-block;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
 }
 
 .sortable > li {

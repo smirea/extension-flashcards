@@ -49,6 +49,10 @@ function getOptions (callback) {
   port.post('getOptions', {
     callback: function (opt) {
       options = opt;
+      // Only show elements that are in the layout;
+      options.displayOrder = options.displayOrder.filter(function (d) {
+        return options.layout.indexOf(d) > -1;
+      });
       (callback || function () {})(opt);
     }
   });
@@ -102,10 +106,11 @@ function showFlashcard (card) {
     $wrapper.append(get(options.layout[i]));
   }
 
-  for (var key in card) {
-    if (options.layout.indexOf(key) > -1) { continue; }
-    $wrapper.append(get(key));
-  }
+  // // Add remaining keys.
+  // for (var key in card) {
+  //   if (options.layout.indexOf(key) > -1) { continue; }
+  //   $wrapper.append(get(key));
+  // }
 
   // Highlight connectors in phrase.
   var $name = $wrapper.find('.jfc-phrase .jfc-name').remove();

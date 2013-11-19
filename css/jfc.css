@@ -23,7 +23,7 @@
   padding: 10px;
 }
 
-.jfc-English, .jfc-Japanese {
+.jfc-English, .jfc-Romaji, .jfc-Hiragana, .jfc-Katakana {
   font-size: 12pt;
   font-weight: bold;
 }
@@ -42,7 +42,7 @@
   border-radius: 0 0 0 10px;
   border: 1px solid #ddd;
   border-width: 0 0 1px 1px;
-  background: #eef;
+  background: #eff6ff;
   padding: 2px 8px;
   font-size: 8pt;
   font-weight: bold;

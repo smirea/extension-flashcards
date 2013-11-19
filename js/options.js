@@ -79,17 +79,33 @@ function set_layout () {
   }
   keys = Object.keys(keys).filter(function (k) { return exclude.indexOf(k) == -1; });
 
+  // Create layout options.
+  var layoutKeys = getOption('layout');
   addOption(
-     'Layout',
-    'The order of all the elements in the flash card. <br />Drag stuff around to re-order.',
-    createList('layout', keys, card)
-  );
+    'Layout',
+    'The order of all the elements in the flash card. <br />' +
+      'Drag stuff around to re-order. <br />' +
+      'Drag elements from one list to the either to have then show or not on the flashcards.',
+    $().
+      add(createList('layout', layoutKeys, card, 'Visible Elements:').addClass('layout-connected')).
+      add(createList(
+        'layoutDisabled',
+        keys.filter(function (k) { return layoutKeys.indexOf(k) == -1; }),
+        card,
+        'Hidden elements:'
+      ).addClass('layout-connected'))
+  ).find('.sortable').sortable('option', 'connectWith', '.layout-connected');
 
+  // Create Display Order options.
   addOption(
     'Display Order',
-    'The order in which each of the elements (hints) will be displayed. <br />By default, only the first element in this list is visible initially.',
+    'The order in which each of the elements (hints) will be displayed. <br />' +
+      'By default, only the first visible element in this list is shown initially. <br />' +
+      'If elements are not visible (see Layout section), then they will be skipped here.',
     createList('displayOrder', keys, card)
   );
+
+  // Create Flashcard Sets options.
 
   var categories = {};
   cards.forEach(function (card) {
@@ -155,14 +171,6 @@ function set_layout () {
     $cards.disableSelection(),
     true
   );
-
-  $('.sortable').sortable({
-    placeholder: 'sort-placeholder',
-    forcePlaceholderSize: true,
-    revert: true,
-  }).disableSelection().each(function () {
-    $(this).css({height: $(this).height()});
-  });
 
   // Add values to all .auto-complete fields.
   $('.auto-complete').each(function () {
@@ -365,12 +373,14 @@ function createOption (title, description, $content, oneColumn) {
 }
 
 /**
- * @param  {String} description
+ * @param  {String} name
  * @param  {Array} keys
  * @param  {Object} map
+ * @param  {String} title Optional. Header of the list.
+ * @param  {Object} options Optional. Extra options to pass/overwrite to the $.sortable().
  * @return {jQuery}
  */
-function createList (name, keys, map) {
+function createList (name, keys, map, title, options) {
   var order = getOption(name, []);
   var $wrapper = jqElement('ul').addClass('sortable').attr({name:name, id:name});
 
@@ -388,6 +398,19 @@ function createList (name, keys, map) {
   for (var i=0; i<keys.length; ++i) {
     if (order.indexOf(keys[i]) > -1) { continue; }
     $wrapper.append(make(keys[i]));
+  }
+
+  var opt = $.extend({
+    placeholder: 'sort-placeholder',
+    items: '> li',
+    forcePlaceholderSize: true,
+    revert: true,
+  }, options);
+
+  $wrapper.sortable(opt).disableSelection();
+
+  if (title && title.length > 0) {
+    $wrapper.prepend(jqElement('div').addClass('list-title').html(title));
   }
 
   return $wrapper;
