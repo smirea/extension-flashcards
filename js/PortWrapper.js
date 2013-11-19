@@ -81,7 +81,7 @@ var PortWrapper = (function () {
       }
 
       if (!handlers[message.action]) {
-        that.warn('[PortWrapper] No handlers defined for: ', message.action);
+        that.warn('[PortWrapper] No handlers defined for:', message.action);
         return;
       }
 
