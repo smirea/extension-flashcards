@@ -63,7 +63,6 @@ function getFlashcardSet () {
 }
 
 function showFlashcard (card) {
-  revealIndex = 1;
   stoppetProgressBar = options.progressDisabled || !options.progressTime || options.progressTime <= 0;
 
   $wrapper.remove();
@@ -103,6 +102,7 @@ function showFlashcard (card) {
   }
 
   for (var i=0; i<options.layout.length; ++i) {
+    if (!(options.layout[i] in card)) { continue; }
     $wrapper.append(get(options.layout[i]));
   }
 
@@ -141,9 +141,6 @@ function showFlashcard (card) {
       }
     });
 
-  // Only show the first element.
-  $wrapper.find('.jfc-element').hide().filter('.jfc-' + options.displayOrder[0]).show();
-
   // Show.
   $wrapper.
     addClass('jfc-flashcard').
@@ -152,6 +149,13 @@ function showFlashcard (card) {
     fadeIn('normal');
 
   addEvents();
+
+  // Only show the first element.
+  revealIndex = 0;
+  $wrapper.find('.jfc-element').hide();
+  var $next = getNextHint();
+  if (!$next) { throw new Error('No first element?!'); }
+  $next.show();
 
   return $wrapper;
 }
@@ -169,8 +173,27 @@ function showNextHint (noClose) {
     return;
   }
 
-  $wrapper.find('.jfc-' + options.displayOrder[revealIndex]).slideDown();
-  ++revealIndex;
+  var $next = getNextHint();
+  if (!$next || $next.length == 0) {
+    $wrapper.find('.jfc-close').click();
+    return;
+  }
+  $next.slideDown();
+}
+
+/**
+ * Returns the next hint that needs to be displayed or null if all of them are done.
+ * @return {jQuery}
+ */
+function getNextHint () {
+  while (revealIndex < options.displayOrder.length) {
+    var $next = $wrapper.find('.jfc-' + options.displayOrder[revealIndex]);
+    ++revealIndex;
+
+    if ($next && $next.length > 0) { return $next; }
+  }
+
+  return null;
 }
 
 function addEvents () {
