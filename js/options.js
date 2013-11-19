@@ -114,20 +114,24 @@ function set_layout () {
     }
 
     var id = 'category-' + name.replace(/\s+/g, '-');
-    var $title = jqElement('label').attr({'for':id}).addClass('card-list-title').html(name);
+    var $title = jqElement('label');
     var $cbx = $cardList.find('input[type="checkbox"]');
 
-    $title.prepend(
-      jqElement('input').
-        attr({id:id, type:'checkbox', checked:'checked'}).
-        data('target', $cbx).
-        on('change', function (event) {
-          event.preventDefault();
-          event.stopPropagation();
-          event.stopImmediatePropagation();
-          $(this).data('target').trigger('set-checked', [this.checked]);
-        })
-    );
+    $title.
+      attr({'for':id}).
+      addClass('card-list-title').
+      html(name + ' <span class="title-info">(' + categories[name].length + ' cards)</span>').
+      prepend(
+        jqElement('input').
+          attr({id:id, type:'checkbox', checked:'checked'}).
+          data('target', $cbx).
+          on('change', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+            $(this).data('target').trigger('set-checked', [this.checked]);
+          })
+      );
 
     // Uncheck the title checkbox when all the checkboxes are not checked.
     (function ($checkboxes, $target) {
@@ -146,7 +150,7 @@ function set_layout () {
   }
 
   addOption(
-    'Card List',
+    'Flashcard Sets',
     'These are all the cards that you have stored. You can check/uncheck each one to have it show or not',
     $cards.disableSelection(),
     true

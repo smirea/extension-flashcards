@@ -126,8 +126,9 @@ footer a {
   margin-top: 0;
 }
 
-.card-list {
-
+.card-list-title .title-info {
+  font-size: 0.75em;
+  color: #666;
 }
 
 .card-list li {
