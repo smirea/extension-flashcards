@@ -2,6 +2,8 @@
 var flashcards = [];
 var history = []; // stack of sent flash cards
 
+var options;
+
 // Tracks when the next flashcard needs to be shown.
 var timeout;
 
@@ -37,21 +39,13 @@ var defaultOptions = {
   displayOrder: ('Katakana Hiragana Romaji story phrase English').split(' '),
 };
 
-// Make sure all the options have their defaults.
-var options = ls.get('options', {});
-for (var key in defaultOptions) {
-  if (key in options) { continue; }
-  options[key] = defaultOptions[key];
-}
-ls.set('options', options);
-setTimer();
-
 // All handlers a port can post to. Anything else will raise an Exception.
 var handlers = {
   refreshOptions: function _refreshOptions () {
     optionsChanged(options, ls.get('options'));
     options = ls.get('options');
     for (var tabId in ports) {
+      if (ports[tabId] == this) { continue; }
       ports[tabId].post('refreshOptions');
     }
   },
@@ -133,11 +127,33 @@ function sendFlashcards (maxCards) {
 }
 
 function optionsChanged (old) {
-  //TODO: me
+  //TODO: really do this properly ...
+  // window.location.reload();
+  reloadOptions();
+  setFlashcards();
+}
+
+function reloadOptions () {
+  // Make sure all the options have their defaults.
+  options = ls.get('options', {});
+  for (var key in defaultOptions) {
+    if (key in options) { continue; }
+    options[key] = defaultOptions[key];
+  }
+  ls.set('options', options);
+  setTimer();
+}
+
+function setFlashcards () {
+  flashcards = ls.get('flashcards');
+  if (!flashcards || typeof flashcards != 'object') {
+    loadData();
+  }
 }
 
 function init () {
-  loadData();
+  reloadOptions();
+  setFlashcards();
   init_ports(handlers);
   if (!options.disableGlobalHotkeys) { init_global_hotkeys(); }
 }

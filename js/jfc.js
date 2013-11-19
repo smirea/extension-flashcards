@@ -2,12 +2,6 @@
 // Don't cache more than this number of cards in the deck.
 var MAX_DECK_SIZE = 69;
 
-// If a port disconnects, how many times to retry reconnecting.
-var MAX_RETRIES = 10;
-
-// Timeout between every retry.
-var RETRY_TIMEOUT = 1 * 1000;
-
 // Press this to reveal a panel.
 var hotkeys = {
   // Shows next hint, clears the flashcard and retries new flashcard from cache or a new set.
@@ -113,18 +107,20 @@ function showFlashcard (card) {
   // }
 
   // Highlight connectors in phrase.
-  var $name = $wrapper.find('.jfc-phrase .jfc-name').remove();
-  var phrase = $wrapper.find('.jfc-phrase').html();
-  var connectors = phrase.match(/([A-Z]+,?\s*)+/g).sort(function (a, b) {
-    return a.length < b.length;
-  }).slice(0, 2);
-  for (var i=0; i<connectors.length; ++i) {
-    phrase = phrase.replace(
-      new RegExp(connectors[i], 'gi'),
-      '<span class="jfc-connector">' + connectors[i] + '</span>'
-    );
+  if ('phrase' in card) {
+    var $name = $wrapper.find('.jfc-phrase .jfc-name').remove();
+    var phrase = $wrapper.find('.jfc-phrase').html();
+    var connectors = phrase.match(/([A-Z]+,?\s*)+/g).sort(function (a, b) {
+      return a.length < b.length;
+    }).slice(0, 2);
+    for (var i=0; i<connectors.length; ++i) {
+      phrase = phrase.replace(
+        new RegExp(connectors[i], 'gi'),
+        '<span class="jfc-connector">' + connectors[i] + '</span>'
+      );
+    }
+    $wrapper.find('.jfc-phrase').html(phrase).prepend($name);
   }
-  $wrapper.find('.jfc-phrase').html(phrase).prepend($name);
 
   // Close button.
   jqElement('a').
@@ -253,6 +249,12 @@ function clear () {
 }
 
 function initPort (retryCount) {
+  // If a port disconnects, how many times to retry reconnecting.
+  var MAX_RETRIES = 10;
+
+  // Timeout between every retry.
+  var RETRY_TIMEOUT = 1 * 1000;
+
   // To initiate a retry sequence, start from retryCount = 1;
   retryCount = retryCount || 0;
 
@@ -275,28 +277,34 @@ function initPort (retryCount) {
 
   if (retryCount > 0) {
     if (retryCount > MAX_RETRIES) {
-      logger.warn('[PORT] Failed to connect, giving up.');
+      console.warn('[PORT] Failed to connect, giving up.');
+      return;
     } else {
-      logger.info('[PORT] Attempting reconnection %s/%s', retryCount, MAX_RETRIES);
+      console.info('[PORT] Attempting reconnection %s/%s', retryCount, MAX_RETRIES);
     }
   }
 
+  var retry = function (val) {
+    retryCount = val || retryCount || 0;
+    ++retryCount;
+    return setTimeout(initPort.bind(null, retryCount), RETRY_TIMEOUT);
+  }
+
   try {
-    port = new PortWrapper(chrome.extension.connect(), {
-      logLevel: logLevel
-    });
+    var tmp = chrome.runtime.connect({name:'content-script'});
+    port = new PortWrapper(tmp);
+
+    if (retryCount > 0) {
+      console.info('[PORT] Reconnection Succeeded!');
+    }
 
     port.addHandlers(handlers);
 
     port.disconnect(function _onDisconnect (event) {
-      logger.warn('[PORT] disconnected');
-      initPort(1);
+      console.warn('[PORT] disconnected');
+      retry(0);
     });
-
-    if (retryCount > 0) {
-      logger.info('[PORT] Reconnection Succeeded!');
-    }
   } catch (ex) {
-    initPort(retryCount + 1);
+    retry();
   }
 }

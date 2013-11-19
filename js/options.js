@@ -5,7 +5,7 @@ var cards = ls.get('flashcards');
 var $main;
 var options = ls.get('options', {});
 
-init_port();
+initPort();
 
 $(function _init_options () {
   $main = $('#main');
@@ -104,6 +104,16 @@ function set_layout () {
       'If elements are not visible (see Layout section), then they will be skipped here.',
     createList('displayOrder', keys, card)
   );
+
+  addOption(
+    'Add New Flashcards',
+    'You can easily add your own flashcards by adding the JSON to the field on the right. <br />' +
+      'These are saved locally and you can download them anytime. <br />' +
+      'For now, the format has to be JSON. <br />' +
+      'Check the <a href="https://github.com/smirea/extension-flashcards" target="_blank">' +
+      'github page</a> for more info on how the simple format should look like.',
+    jqElement('div').attr({id:'placeholder'})
+  ).find('#placeholder').parent().addClass('add-section').html(createAddSection());
 
   // Create Flashcard Sets options.
 
@@ -416,6 +426,91 @@ function createList (name, keys, map, title, options) {
   return $wrapper;
 }
 
+function createAddSection () {
+  var defaultCategory = 'Default';
+
+  var $textarea = jqElement('textarea');
+  var $result = jqElement('div');
+
+  var error = function (str) { $result.append(jqElement('div').addClass('msg error').html(str)); };
+  var warn = function (str) { $result.append(jqElement('div').addClass('msg warn').html(str)); };
+
+  var makeToggle = function (title, elements) {
+    var $content = jqElement('ul').addClass('target');
+
+    for (var i=0; i<elements.length; ++i) {
+      $content.append(jqElement('li').append(jqElement('pre').append(JSON.stringify(elements[i]))));
+    }
+
+    return jqElement('div').addClass('toggle').append(
+      jqElement('div').addClass('title').html(title).disableSelection().on('click', function () {
+        $(this).parent().toggleClass('visible');
+      }),
+      $content
+    );
+  };
+
+  var oldText = null;
+  $textarea.on('keyup', function (event) {
+    if ($textarea.val() == oldText) { return; }
+    oldText = $textarea.val();
+
+    $result.empty();
+
+    var json;
+    try { json = JSON.parse($textarea.val()); } catch (ex) {
+      error('Invalid format: ' + ex);
+      return;
+    }
+
+    if (!Array.isArray(json)) {
+      if (typeof json != 'object') {
+        error('You must pass in an Array or an Object');
+        return;
+      }
+      json = [json];
+    }
+
+    var newCards = {};
+    for (var i=0; i<json.length; ++i) {
+      var card = json[i];
+      if (!('category' in card)) {
+        warn('Missing category for #' + (i+1) +', set to: ' + defaultCategory);
+        card.category = defaultCategory;
+      }
+      var categ = card.category;
+      delete card.category;
+      newCards[categ] = newCards[categ] || [];
+      newCards[categ].push(card);
+    }
+
+    $result.append(
+      jqElement('input').
+        attr({type:'button', value:'Ok, cool, add these flashcards!'}).
+        on('click', function (event) {
+          var c = $.extend({}, newCards);
+          for (var name in c) {
+            for (var i=0; i<c[name].length; ++i) {
+              c[name][i].category = name;
+              cards.push(c[name][i]);
+            }
+          }
+          ls.set('flashcards', cards);
+          $textarea.val('');
+          $result.empty();
+          backgroundOptionsRefreshed();
+          window.location.reload();
+        })
+    );
+
+    for (var name in newCards) {
+      $result.append(makeToggle(name + ': ' + newCards[name].length + ' cards', newCards[name]));
+    }
+  });
+
+  return $textarea.add($result);
+}
+
 /**
  * Get an option.
  * @param  {String} name
@@ -441,22 +536,63 @@ function setOption (name, value) {
  */
 function saveOptions () {
   ls.set('options', options);
+  backgroundOptionsRefreshed();
+}
+
+/**
+ * Tells the background page that the options have been refreshed.
+ */
+function backgroundOptionsRefreshed () {
   port.post('refreshOptions');
 }
 
-function init_port () {
+function initPort (retryCount) {
+  // If a port disconnects, how many times to retry reconnecting.
+  var MAX_RETRIES = 10;
+
+  // Timeout between every retry.
+  var RETRY_TIMEOUT = 1 * 1000;
+
+  // To initiate a retry sequence, start from retryCount = 1;
+  retryCount = retryCount || 0;
+
   var handlers = {
-    // Utils.
-    echo : function _echoClient (message) {
-      console.log('[PORT]', message.content);
+    refreshOptions: function () {
+      console.warn('I should not be getting this.');
     }
   };
 
-  port = new PortWrapper(chrome.extension.connect({name: 'options'}));
+  if (retryCount > 0) {
+    if (retryCount > MAX_RETRIES) {
+      console.warn('[PORT] Failed to connect, giving up.');
+      return;
+    } else {
+      console.info('[PORT] Attempting reconnection %s/%s', retryCount, MAX_RETRIES);
+    }
+  }
 
-  port.addHandlers(handlers);
+  var retry = function (val) {
+    retryCount = val || retryCount || 0;
+    ++retryCount;
+    return setTimeout(initPort.bind(null, retryCount), RETRY_TIMEOUT);
+  }
 
-  port.disconnect(function _onDisconnect (event) {
-    console.warn('[PORT] disconnected');
-  });
+  try {
+    var tmp = chrome.runtime.connect({name:'options'});
+    port = new PortWrapper(tmp);
+
+    if (retryCount > 0) {
+      console.info('[PORT] Reconnection Succeeded!');
+    }
+
+    port.addHandlers(handlers);
+
+    port.disconnect(function _onDisconnect (event) {
+      console.warn('[PORT] disconnected');
+      retry(0);
+    });
+  } catch (ex) {
+    retry();
+  }
 }
+

@@ -13,6 +13,11 @@ ul {
   list-style-type: none;
 }
 
+pre {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: #e0edff;
   padding: 0;
@@ -26,6 +31,15 @@ body {
   margin: 0 auto;
   padding: 0;
   width: 760px;
+}
+
+#main a {
+  color: #0080ff;
+}
+
+#main a:hover {
+  text-decoration: none;
+  color: crimson;
 }
 
 footer {
@@ -66,7 +80,7 @@ footer a {
 
 .details {
   padding: 10px;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 .details.one-column {
@@ -100,8 +114,56 @@ footer a {
   height: 100%;
 }
 
+.content.add-section {
+  font-size: 0.85em;
+}
+
+.content.add-section > * {
+  display: inline-block;
+  height: 300px;
+  width: 260px;
+  vertical-align: top;
+  overflow: auto;
+}
+
+.content.add-section > * + * {
+  margin-left: 10px;
+}
+
+.content.add-section input[type="button"] {
+  display: block;
+  margin: 10px auto;
+}
+
 .details.one-column + .content {
   padding-top: 0;
+}
+
+.toggle .title {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 3px;
+  font-weight: bold;
+  text-indent: 2px;
+  cursor: pointer;
+}
+
+.toggle .title:before {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 0.8em;
+  content: '[-]';
+}
+
+.toggle + .toggle {
+  margin-top: 5px;
+}
+
+.toggle:not(.visible) .title:before {
+  content: '[+]';
+}
+
+.toggle:not(.visible) .target {
+  display: none;
 }
 
 .checkbox {
@@ -288,6 +350,37 @@ output {
 
 output + output, input + output {
   margin-left: 2px;
+}
+
+.msg {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  margin: 0 0 3px 0;
+  padding: 2px;
+  color: #222;
+}
+
+.msg:before {
+  display: inline-block;
+  margin: 0 3px;
+}
+
+.error {
+  border-color: #6b1a1d;
+  background-color: #fd8387;
+}
+
+.error:before {
+  content: '☹ ';
+}
+
+.warn {
+  border-color: #6b4f1d;
+  background-color: #ffcc66;
+}
+
+.warn:before {
+  content: '⚠ ';
 }
 
 .clearfix:after {
