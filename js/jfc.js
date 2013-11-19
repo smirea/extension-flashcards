@@ -13,7 +13,7 @@ var hotkeys = {
   // Shows next hint, clears the flashcard and retries new flashcard from cache or a new set.
   next: KEYS.N,
   // Clears the whole set of flashcards.
-  clear: KEYS.P,
+  clear: KEYS.I,
 };
 
 // Which of the log functions to use. Default = ALL
