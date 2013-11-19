@@ -73,8 +73,13 @@ var ls = {
   },
 };
 
+/**
+ * Creates a unique string for a flashcard.
+ * @param  {[type]} card [description]
+ * @return {[type]}      [description]
+ */
 function hashFlashcard (card) {
-  return (card.category || '') + '|' + (card.Japanese || '');
+  return (card.category || '') + '|' + (card.Romaji || '');
 }
 
 /**

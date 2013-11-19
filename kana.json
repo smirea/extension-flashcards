@@ -1,0 +1,1844 @@
+[
+  {
+    "char": "ぁ",
+    "html": "&#12353;",
+    "hex": "&#x3041",
+    "description": "HIRAGANA LETTER SMALL A"
+  },
+  {
+    "char": "あ",
+    "html": "&#12354;",
+    "hex": "&#x3042",
+    "description": "HIRAGANA LETTER A"
+  },
+  {
+    "char": "ぃ",
+    "html": "&#12355;",
+    "hex": "&#x3043",
+    "description": "HIRAGANA LETTER SMALL I"
+  },
+  {
+    "char": "い",
+    "html": "&#12356;",
+    "hex": "&#x3044",
+    "description": "HIRAGANA LETTER I"
+  },
+  {
+    "char": "ぅ",
+    "html": "&#12357;",
+    "hex": "&#x3045",
+    "description": "HIRAGANA LETTER SMALL U"
+  },
+  {
+    "char": "う",
+    "html": "&#12358;",
+    "hex": "&#x3046",
+    "description": "HIRAGANA LETTER U"
+  },
+  {
+    "char": "ぇ",
+    "html": "&#12359;",
+    "hex": "&#x3047",
+    "description": "HIRAGANA LETTER SMALL E"
+  },
+  {
+    "char": "え",
+    "html": "&#12360;",
+    "hex": "&#x3048",
+    "description": "HIRAGANA LETTER E"
+  },
+  {
+    "char": "ぉ",
+    "html": "&#12361;",
+    "hex": "&#x3049",
+    "description": "HIRAGANA LETTER SMALL O"
+  },
+  {
+    "char": "お",
+    "html": "&#12362;",
+    "hex": "&#x304A",
+    "description": "HIRAGANA LETTER O"
+  },
+  {
+    "char": "か",
+    "html": "&#12363;",
+    "hex": "&#x304B",
+    "description": "HIRAGANA LETTER KA"
+  },
+  {
+    "char": "が",
+    "html": "&#12364;",
+    "hex": "&#x304C",
+    "description": "HIRAGANA LETTER GA"
+  },
+  {
+    "char": "き",
+    "html": "&#12365;",
+    "hex": "&#x304D",
+    "description": "HIRAGANA LETTER KI"
+  },
+  {
+    "char": "ぎ",
+    "html": "&#12366;",
+    "hex": "&#x304E",
+    "description": "HIRAGANA LETTER GI"
+  },
+  {
+    "char": "く",
+    "html": "&#12367;",
+    "hex": "&#x304F",
+    "description": "HIRAGANA LETTER KU"
+  },
+  {
+    "char": "ぐ",
+    "html": "&#12368;",
+    "hex": "&#x3050",
+    "description": "HIRAGANA LETTER GU"
+  },
+  {
+    "char": "け",
+    "html": "&#12369;",
+    "hex": "&#x3051",
+    "description": "HIRAGANA LETTER KE"
+  },
+  {
+    "char": "げ",
+    "html": "&#12370;",
+    "hex": "&#x3052",
+    "description": "HIRAGANA LETTER GE"
+  },
+  {
+    "char": "こ",
+    "html": "&#12371;",
+    "hex": "&#x3053",
+    "description": "HIRAGANA LETTER KO"
+  },
+  {
+    "char": "ご",
+    "html": "&#12372;",
+    "hex": "&#x3054",
+    "description": "HIRAGANA LETTER GO"
+  },
+  {
+    "char": "さ",
+    "html": "&#12373;",
+    "hex": "&#x3055",
+    "description": "HIRAGANA LETTER SA"
+  },
+  {
+    "char": "ざ",
+    "html": "&#12374;",
+    "hex": "&#x3056",
+    "description": "HIRAGANA LETTER ZA"
+  },
+  {
+    "char": "し",
+    "html": "&#12375;",
+    "hex": "&#x3057",
+    "description": "HIRAGANA LETTER SI"
+  },
+  {
+    "char": "じ",
+    "html": "&#12376;",
+    "hex": "&#x3058",
+    "description": "HIRAGANA LETTER ZI"
+  },
+  {
+    "char": "す",
+    "html": "&#12377;",
+    "hex": "&#x3059",
+    "description": "HIRAGANA LETTER SU"
+  },
+  {
+    "char": "ず",
+    "html": "&#12378;",
+    "hex": "&#x305A",
+    "description": "HIRAGANA LETTER ZU"
+  },
+  {
+    "char": "せ",
+    "html": "&#12379;",
+    "hex": "&#x305B",
+    "description": "HIRAGANA LETTER SE"
+  },
+  {
+    "char": "ぜ",
+    "html": "&#12380;",
+    "hex": "&#x305C",
+    "description": "HIRAGANA LETTER ZE"
+  },
+  {
+    "char": "そ",
+    "html": "&#12381;",
+    "hex": "&#x305D",
+    "description": "HIRAGANA LETTER SO"
+  },
+  {
+    "char": "ぞ",
+    "html": "&#12382;",
+    "hex": "&#x305E",
+    "description": "HIRAGANA LETTER ZO"
+  },
+  {
+    "char": "た",
+    "html": "&#12383;",
+    "hex": "&#x305F",
+    "description": "HIRAGANA LETTER TA"
+  },
+  {
+    "char": "だ",
+    "html": "&#12384;",
+    "hex": "&#x3060",
+    "description": "HIRAGANA LETTER DA"
+  },
+  {
+    "char": "ち",
+    "html": "&#12385;",
+    "hex": "&#x3061",
+    "description": "HIRAGANA LETTER TI"
+  },
+  {
+    "char": "ぢ",
+    "html": "&#12386;",
+    "hex": "&#x3062",
+    "description": "HIRAGANA LETTER DI"
+  },
+  {
+    "char": "っ",
+    "html": "&#12387;",
+    "hex": "&#x3063",
+    "description": "HIRAGANA LETTER SMALL TU"
+  },
+  {
+    "char": "つ",
+    "html": "&#12388;",
+    "hex": "&#x3064",
+    "description": "HIRAGANA LETTER TU"
+  },
+  {
+    "char": "づ",
+    "html": "&#12389;",
+    "hex": "&#x3065",
+    "description": "HIRAGANA LETTER DU"
+  },
+  {
+    "char": "て",
+    "html": "&#12390;",
+    "hex": "&#x3066",
+    "description": "HIRAGANA LETTER TE"
+  },
+  {
+    "char": "で",
+    "html": "&#12391;",
+    "hex": "&#x3067",
+    "description": "HIRAGANA LETTER DE"
+  },
+  {
+    "char": "と",
+    "html": "&#12392;",
+    "hex": "&#x3068",
+    "description": "HIRAGANA LETTER TO"
+  },
+  {
+    "char": "ど",
+    "html": "&#12393;",
+    "hex": "&#x3069",
+    "description": "HIRAGANA LETTER DO"
+  },
+  {
+    "char": "な",
+    "html": "&#12394;",
+    "hex": "&#x306A",
+    "description": "HIRAGANA LETTER NA"
+  },
+  {
+    "char": "に",
+    "html": "&#12395;",
+    "hex": "&#x306B",
+    "description": "HIRAGANA LETTER NI"
+  },
+  {
+    "char": "ぬ",
+    "html": "&#12396;",
+    "hex": "&#x306C",
+    "description": "HIRAGANA LETTER NU"
+  },
+  {
+    "char": "ね",
+    "html": "&#12397;",
+    "hex": "&#x306D",
+    "description": "HIRAGANA LETTER NE"
+  },
+  {
+    "char": "の",
+    "html": "&#12398;",
+    "hex": "&#x306E",
+    "description": "HIRAGANA LETTER NO"
+  },
+  {
+    "char": "は",
+    "html": "&#12399;",
+    "hex": "&#x306F",
+    "description": "HIRAGANA LETTER HA"
+  },
+  {
+    "char": "ば",
+    "html": "&#12400;",
+    "hex": "&#x3070",
+    "description": "HIRAGANA LETTER BA"
+  },
+  {
+    "char": "ぱ",
+    "html": "&#12401;",
+    "hex": "&#x3071",
+    "description": "HIRAGANA LETTER PA"
+  },
+  {
+    "char": "ひ",
+    "html": "&#12402;",
+    "hex": "&#x3072",
+    "description": "HIRAGANA LETTER HI"
+  },
+  {
+    "char": "び",
+    "html": "&#12403;",
+    "hex": "&#x3073",
+    "description": "HIRAGANA LETTER BI"
+  },
+  {
+    "char": "ぴ",
+    "html": "&#12404;",
+    "hex": "&#x3074",
+    "description": "HIRAGANA LETTER PI"
+  },
+  {
+    "char": "ふ",
+    "html": "&#12405;",
+    "hex": "&#x3075",
+    "description": "HIRAGANA LETTER HU"
+  },
+  {
+    "char": "ぶ",
+    "html": "&#12406;",
+    "hex": "&#x3076",
+    "description": "HIRAGANA LETTER BU"
+  },
+  {
+    "char": "ぷ",
+    "html": "&#12407;",
+    "hex": "&#x3077",
+    "description": "HIRAGANA LETTER PU"
+  },
+  {
+    "char": "へ",
+    "html": "&#12408;",
+    "hex": "&#x3078",
+    "description": "HIRAGANA LETTER HE"
+  },
+  {
+    "char": "べ",
+    "html": "&#12409;",
+    "hex": "&#x3079",
+    "description": "HIRAGANA LETTER BE"
+  },
+  {
+    "char": "ぺ",
+    "html": "&#12410;",
+    "hex": "&#x307A",
+    "description": "HIRAGANA LETTER PE"
+  },
+  {
+    "char": "ほ",
+    "html": "&#12411;",
+    "hex": "&#x307B",
+    "description": "HIRAGANA LETTER HO"
+  },
+  {
+    "char": "ぼ",
+    "html": "&#12412;",
+    "hex": "&#x307C",
+    "description": "HIRAGANA LETTER BO"
+  },
+  {
+    "char": "ぽ",
+    "html": "&#12413;",
+    "hex": "&#x307D",
+    "description": "HIRAGANA LETTER PO"
+  },
+  {
+    "char": "ま",
+    "html": "&#12414;",
+    "hex": "&#x307E",
+    "description": "HIRAGANA LETTER MA"
+  },
+  {
+    "char": "み",
+    "html": "&#12415;",
+    "hex": "&#x307F",
+    "description": "HIRAGANA LETTER MI"
+  },
+  {
+    "char": "む",
+    "html": "&#12416;",
+    "hex": "&#x3080",
+    "description": "HIRAGANA LETTER MU"
+  },
+  {
+    "char": "め",
+    "html": "&#12417;",
+    "hex": "&#x3081",
+    "description": "HIRAGANA LETTER ME"
+  },
+  {
+    "char": "も",
+    "html": "&#12418;",
+    "hex": "&#x3082",
+    "description": "HIRAGANA LETTER MO"
+  },
+  {
+    "char": "ゃ",
+    "html": "&#12419;",
+    "hex": "&#x3083",
+    "description": "HIRAGANA LETTER SMALL YA"
+  },
+  {
+    "char": "や",
+    "html": "&#12420;",
+    "hex": "&#x3084",
+    "description": "HIRAGANA LETTER YA"
+  },
+  {
+    "char": "ゅ",
+    "html": "&#12421;",
+    "hex": "&#x3085",
+    "description": "HIRAGANA LETTER SMALL YU"
+  },
+  {
+    "char": "ゆ",
+    "html": "&#12422;",
+    "hex": "&#x3086",
+    "description": "HIRAGANA LETTER YU"
+  },
+  {
+    "char": "ょ",
+    "html": "&#12423;",
+    "hex": "&#x3087",
+    "description": "HIRAGANA LETTER SMALL YO"
+  },
+  {
+    "char": "よ",
+    "html": "&#12424;",
+    "hex": "&#x3088",
+    "description": "HIRAGANA LETTER YO"
+  },
+  {
+    "char": "ら",
+    "html": "&#12425;",
+    "hex": "&#x3089",
+    "description": "HIRAGANA LETTER RA"
+  },
+  {
+    "char": "り",
+    "html": "&#12426;",
+    "hex": "&#x308A",
+    "description": "HIRAGANA LETTER RI"
+  },
+  {
+    "char": "る",
+    "html": "&#12427;",
+    "hex": "&#x308B",
+    "description": "HIRAGANA LETTER RU"
+  },
+  {
+    "char": "れ",
+    "html": "&#12428;",
+    "hex": "&#x308C",
+    "description": "HIRAGANA LETTER RE"
+  },
+  {
+    "char": "ろ",
+    "html": "&#12429;",
+    "hex": "&#x308D",
+    "description": "HIRAGANA LETTER RO"
+  },
+  {
+    "char": "ゎ",
+    "html": "&#12430;",
+    "hex": "&#x308E",
+    "description": "HIRAGANA LETTER SMALL WA"
+  },
+  {
+    "char": "わ",
+    "html": "&#12431;",
+    "hex": "&#x308F",
+    "description": "HIRAGANA LETTER WA"
+  },
+  {
+    "char": "ゐ",
+    "html": "&#12432;",
+    "hex": "&#x3090",
+    "description": "HIRAGANA LETTER WI"
+  },
+  {
+    "char": "ゑ",
+    "html": "&#12433;",
+    "hex": "&#x3091",
+    "description": "HIRAGANA LETTER WE"
+  },
+  {
+    "char": "を",
+    "html": "&#12434;",
+    "hex": "&#x3092",
+    "description": "HIRAGANA LETTER WO"
+  },
+  {
+    "char": "ん",
+    "html": "&#12435;",
+    "hex": "&#x3093",
+    "description": "HIRAGANA LETTER N"
+  },
+  {
+    "char": "ゔ",
+    "html": "&#12436;",
+    "hex": "&#x3094",
+    "description": "HIRAGANA LETTER VU"
+  },
+  {
+    "char": "ゞ",
+    "html": "&#12446;",
+    "hex": "&#x309E",
+    "description": "HIRAGANA VOICED ITERATION MARK"
+  },
+  {
+    "char": "゛",
+    "html": "&#12443;",
+    "hex": "&#x309B",
+    "description": "KATAKANA-HIRAGANA VOICED SOUND MARK"
+  },
+  {
+    "char": "゜",
+    "html": "&#12444;",
+    "hex": "&#x309C",
+    "description": "KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK"
+  },
+  {
+    "char": "ー",
+    "html": "&#12540;",
+    "hex": "&#x30FC",
+    "description": "KATAKANA-HIRAGANA PROLONGED SOUND MARK"
+  },
+  {
+    "char": "ｰ",
+    "html": "&#65392;",
+    "hex": "&#xFF70",
+    "description": "HALFWIDTH KATAKANA-HIRAGANA PROLONGED SOUND MARK"
+  },
+  {
+    "char": "ァ",
+    "html": "&#12449;",
+    "hex": "&#x30A1",
+    "description": "KATAKANA LETTER SMALL A"
+  },
+  {
+    "char": "ア",
+    "html": "&#12450;",
+    "hex": "&#x30A2",
+    "description": "KATAKANA LETTER A"
+  },
+  {
+    "char": "ィ",
+    "html": "&#12451;",
+    "hex": "&#x30A3",
+    "description": "KATAKANA LETTER SMALL I"
+  },
+  {
+    "char": "イ",
+    "html": "&#12452;",
+    "hex": "&#x30A4",
+    "description": "KATAKANA LETTER I"
+  },
+  {
+    "char": "ゥ",
+    "html": "&#12453;",
+    "hex": "&#x30A5",
+    "description": "KATAKANA LETTER SMALL U"
+  },
+  {
+    "char": "ウ",
+    "html": "&#12454;",
+    "hex": "&#x30A6",
+    "description": "KATAKANA LETTER U"
+  },
+  {
+    "char": "ェ",
+    "html": "&#12455;",
+    "hex": "&#x30A7",
+    "description": "KATAKANA LETTER SMALL E"
+  },
+  {
+    "char": "エ",
+    "html": "&#12456;",
+    "hex": "&#x30A8",
+    "description": "KATAKANA LETTER E"
+  },
+  {
+    "char": "ォ",
+    "html": "&#12457;",
+    "hex": "&#x30A9",
+    "description": "KATAKANA LETTER SMALL O"
+  },
+  {
+    "char": "オ",
+    "html": "&#12458;",
+    "hex": "&#x30AA",
+    "description": "KATAKANA LETTER O"
+  },
+  {
+    "char": "カ",
+    "html": "&#12459;",
+    "hex": "&#x30AB",
+    "description": "KATAKANA LETTER KA"
+  },
+  {
+    "char": "ガ",
+    "html": "&#12460;",
+    "hex": "&#x30AC",
+    "description": "KATAKANA LETTER GA"
+  },
+  {
+    "char": "キ",
+    "html": "&#12461;",
+    "hex": "&#x30AD",
+    "description": "KATAKANA LETTER KI"
+  },
+  {
+    "char": "ギ",
+    "html": "&#12462;",
+    "hex": "&#x30AE",
+    "description": "KATAKANA LETTER GI"
+  },
+  {
+    "char": "ク",
+    "html": "&#12463;",
+    "hex": "&#x30AF",
+    "description": "KATAKANA LETTER KU"
+  },
+  {
+    "char": "グ",
+    "html": "&#12464;",
+    "hex": "&#x30B0",
+    "description": "KATAKANA LETTER GU"
+  },
+  {
+    "char": "ケ",
+    "html": "&#12465;",
+    "hex": "&#x30B1",
+    "description": "KATAKANA LETTER KE"
+  },
+  {
+    "char": "ゲ",
+    "html": "&#12466;",
+    "hex": "&#x30B2",
+    "description": "KATAKANA LETTER GE"
+  },
+  {
+    "char": "コ",
+    "html": "&#12467;",
+    "hex": "&#x30B3",
+    "description": "KATAKANA LETTER KO"
+  },
+  {
+    "char": "ゴ",
+    "html": "&#12468;",
+    "hex": "&#x30B4",
+    "description": "KATAKANA LETTER GO"
+  },
+  {
+    "char": "サ",
+    "html": "&#12469;",
+    "hex": "&#x30B5",
+    "description": "KATAKANA LETTER SA"
+  },
+  {
+    "char": "ザ",
+    "html": "&#12470;",
+    "hex": "&#x30B6",
+    "description": "KATAKANA LETTER ZA"
+  },
+  {
+    "char": "シ",
+    "html": "&#12471;",
+    "hex": "&#x30B7",
+    "description": "KATAKANA LETTER SI"
+  },
+  {
+    "char": "ジ",
+    "html": "&#12472;",
+    "hex": "&#x30B8",
+    "description": "KATAKANA LETTER ZI"
+  },
+  {
+    "char": "ス",
+    "html": "&#12473;",
+    "hex": "&#x30B9",
+    "description": "KATAKANA LETTER SU"
+  },
+  {
+    "char": "ズ",
+    "html": "&#12474;",
+    "hex": "&#x30BA",
+    "description": "KATAKANA LETTER ZU"
+  },
+  {
+    "char": "セ",
+    "html": "&#12475;",
+    "hex": "&#x30BB",
+    "description": "KATAKANA LETTER SE"
+  },
+  {
+    "char": "ゼ",
+    "html": "&#12476;",
+    "hex": "&#x30BC",
+    "description": "KATAKANA LETTER ZE"
+  },
+  {
+    "char": "ソ",
+    "html": "&#12477;",
+    "hex": "&#x30BD",
+    "description": "KATAKANA LETTER SO"
+  },
+  {
+    "char": "ゾ",
+    "html": "&#12478;",
+    "hex": "&#x30BE",
+    "description": "KATAKANA LETTER ZO"
+  },
+  {
+    "char": "タ",
+    "html": "&#12479;",
+    "hex": "&#x30BF",
+    "description": "KATAKANA LETTER TA"
+  },
+  {
+    "char": "ダ",
+    "html": "&#12480;",
+    "hex": "&#x30C0",
+    "description": "KATAKANA LETTER DA"
+  },
+  {
+    "char": "チ",
+    "html": "&#12481;",
+    "hex": "&#x30C1",
+    "description": "KATAKANA LETTER TI"
+  },
+  {
+    "char": "ヂ",
+    "html": "&#12482;",
+    "hex": "&#x30C2",
+    "description": "KATAKANA LETTER DI"
+  },
+  {
+    "char": "ッ",
+    "html": "&#12483;",
+    "hex": "&#x30C3",
+    "description": "KATAKANA LETTER SMALL TU"
+  },
+  {
+    "char": "ツ",
+    "html": "&#12484;",
+    "hex": "&#x30C4",
+    "description": "KATAKANA LETTER TU"
+  },
+  {
+    "char": "ヅ",
+    "html": "&#12485;",
+    "hex": "&#x30C5",
+    "description": "KATAKANA LETTER DU"
+  },
+  {
+    "char": "テ",
+    "html": "&#12486;",
+    "hex": "&#x30C6",
+    "description": "KATAKANA LETTER TE"
+  },
+  {
+    "char": "デ",
+    "html": "&#12487;",
+    "hex": "&#x30C7",
+    "description": "KATAKANA LETTER DE"
+  },
+  {
+    "char": "ト",
+    "html": "&#12488;",
+    "hex": "&#x30C8",
+    "description": "KATAKANA LETTER TO"
+  },
+  {
+    "char": "ド",
+    "html": "&#12489;",
+    "hex": "&#x30C9",
+    "description": "KATAKANA LETTER DO"
+  },
+  {
+    "char": "ナ",
+    "html": "&#12490;",
+    "hex": "&#x30CA",
+    "description": "KATAKANA LETTER NA"
+  },
+  {
+    "char": "ニ",
+    "html": "&#12491;",
+    "hex": "&#x30CB",
+    "description": "KATAKANA LETTER NI"
+  },
+  {
+    "char": "ヌ",
+    "html": "&#12492;",
+    "hex": "&#x30CC",
+    "description": "KATAKANA LETTER NU"
+  },
+  {
+    "char": "ネ",
+    "html": "&#12493;",
+    "hex": "&#x30CD",
+    "description": "KATAKANA LETTER NE"
+  },
+  {
+    "char": "ノ",
+    "html": "&#12494;",
+    "hex": "&#x30CE",
+    "description": "KATAKANA LETTER NO"
+  },
+  {
+    "char": "ハ",
+    "html": "&#12495;",
+    "hex": "&#x30CF",
+    "description": "KATAKANA LETTER HA"
+  },
+  {
+    "char": "バ",
+    "html": "&#12496;",
+    "hex": "&#x30D0",
+    "description": "KATAKANA LETTER BA"
+  },
+  {
+    "char": "パ",
+    "html": "&#12497;",
+    "hex": "&#x30D1",
+    "description": "KATAKANA LETTER PA"
+  },
+  {
+    "char": "ヒ",
+    "html": "&#12498;",
+    "hex": "&#x30D2",
+    "description": "KATAKANA LETTER HI"
+  },
+  {
+    "char": "ビ",
+    "html": "&#12499;",
+    "hex": "&#x30D3",
+    "description": "KATAKANA LETTER BI"
+  },
+  {
+    "char": "ピ",
+    "html": "&#12500;",
+    "hex": "&#x30D4",
+    "description": "KATAKANA LETTER PI"
+  },
+  {
+    "char": "フ",
+    "html": "&#12501;",
+    "hex": "&#x30D5",
+    "description": "KATAKANA LETTER HU"
+  },
+  {
+    "char": "ブ",
+    "html": "&#12502;",
+    "hex": "&#x30D6",
+    "description": "KATAKANA LETTER BU"
+  },
+  {
+    "char": "プ",
+    "html": "&#12503;",
+    "hex": "&#x30D7",
+    "description": "KATAKANA LETTER PU"
+  },
+  {
+    "char": "ヘ",
+    "html": "&#12504;",
+    "hex": "&#x30D8",
+    "description": "KATAKANA LETTER HE"
+  },
+  {
+    "char": "ベ",
+    "html": "&#12505;",
+    "hex": "&#x30D9",
+    "description": "KATAKANA LETTER BE"
+  },
+  {
+    "char": "ペ",
+    "html": "&#12506;",
+    "hex": "&#x30DA",
+    "description": "KATAKANA LETTER PE"
+  },
+  {
+    "char": "ホ",
+    "html": "&#12507;",
+    "hex": "&#x30DB",
+    "description": "KATAKANA LETTER HO"
+  },
+  {
+    "char": "ボ",
+    "html": "&#12508;",
+    "hex": "&#x30DC",
+    "description": "KATAKANA LETTER BO"
+  },
+  {
+    "char": "ポ",
+    "html": "&#12509;",
+    "hex": "&#x30DD",
+    "description": "KATAKANA LETTER PO"
+  },
+  {
+    "char": "マ",
+    "html": "&#12510;",
+    "hex": "&#x30DE",
+    "description": "KATAKANA LETTER MA"
+  },
+  {
+    "char": "ミ",
+    "html": "&#12511;",
+    "hex": "&#x30DF",
+    "description": "KATAKANA LETTER MI"
+  },
+  {
+    "char": "ム",
+    "html": "&#12512;",
+    "hex": "&#x30E0",
+    "description": "KATAKANA LETTER MU"
+  },
+  {
+    "char": "メ",
+    "html": "&#12513;",
+    "hex": "&#x30E1",
+    "description": "KATAKANA LETTER ME"
+  },
+  {
+    "char": "モ",
+    "html": "&#12514;",
+    "hex": "&#x30E2",
+    "description": "KATAKANA LETTER MO"
+  },
+  {
+    "char": "ャ",
+    "html": "&#12515;",
+    "hex": "&#x30E3",
+    "description": "KATAKANA LETTER SMALL YA"
+  },
+  {
+    "char": "ヤ",
+    "html": "&#12516;",
+    "hex": "&#x30E4",
+    "description": "KATAKANA LETTER YA"
+  },
+  {
+    "char": "ュ",
+    "html": "&#12517;",
+    "hex": "&#x30E5",
+    "description": "KATAKANA LETTER SMALL YU"
+  },
+  {
+    "char": "ユ",
+    "html": "&#12518;",
+    "hex": "&#x30E6",
+    "description": "KATAKANA LETTER YU"
+  },
+  {
+    "char": "ョ",
+    "html": "&#12519;",
+    "hex": "&#x30E7",
+    "description": "KATAKANA LETTER SMALL YO"
+  },
+  {
+    "char": "ヨ",
+    "html": "&#12520;",
+    "hex": "&#x30E8",
+    "description": "KATAKANA LETTER YO"
+  },
+  {
+    "char": "ラ",
+    "html": "&#12521;",
+    "hex": "&#x30E9",
+    "description": "KATAKANA LETTER RA"
+  },
+  {
+    "char": "リ",
+    "html": "&#12522;",
+    "hex": "&#x30EA",
+    "description": "KATAKANA LETTER RI"
+  },
+  {
+    "char": "ル",
+    "html": "&#12523;",
+    "hex": "&#x30EB",
+    "description": "KATAKANA LETTER RU"
+  },
+  {
+    "char": "レ",
+    "html": "&#12524;",
+    "hex": "&#x30EC",
+    "description": "KATAKANA LETTER RE"
+  },
+  {
+    "char": "ロ",
+    "html": "&#12525;",
+    "hex": "&#x30ED",
+    "description": "KATAKANA LETTER RO"
+  },
+  {
+    "char": "ヮ",
+    "html": "&#12526;",
+    "hex": "&#x30EE",
+    "description": "KATAKANA LETTER SMALL WA"
+  },
+  {
+    "char": "ワ",
+    "html": "&#12527;",
+    "hex": "&#x30EF",
+    "description": "KATAKANA LETTER WA"
+  },
+  {
+    "char": "ヰ",
+    "html": "&#12528;",
+    "hex": "&#x30F0",
+    "description": "KATAKANA LETTER WI"
+  },
+  {
+    "char": "ヱ",
+    "html": "&#12529;",
+    "hex": "&#x30F1",
+    "description": "KATAKANA LETTER WE"
+  },
+  {
+    "char": "ヲ",
+    "html": "&#12530;",
+    "hex": "&#x30F2",
+    "description": "KATAKANA LETTER WO"
+  },
+  {
+    "char": "ン",
+    "html": "&#12531;",
+    "hex": "&#x30F3",
+    "description": "KATAKANA LETTER N"
+  },
+  {
+    "char": "ヴ",
+    "html": "&#12532;",
+    "hex": "&#x30F4",
+    "description": "KATAKANA LETTER VU"
+  },
+  {
+    "char": "ヵ",
+    "html": "&#12533;",
+    "hex": "&#x30F5",
+    "description": "KATAKANA LETTER SMALL KA"
+  },
+  {
+    "char": "ヶ",
+    "html": "&#12534;",
+    "hex": "&#x30F6",
+    "description": "KATAKANA LETTER SMALL KE"
+  },
+  {
+    "char": "ヷ",
+    "html": "&#12535;",
+    "hex": "&#x30F7",
+    "description": "KATAKANA LETTER VA"
+  },
+  {
+    "char": "ヸ",
+    "html": "&#12536;",
+    "hex": "&#x30F8",
+    "description": "KATAKANA LETTER VI"
+  },
+  {
+    "char": "ヹ",
+    "html": "&#12537;",
+    "hex": "&#x30F9",
+    "description": "KATAKANA LETTER VE"
+  },
+  {
+    "char": "ヺ",
+    "html": "&#12538;",
+    "hex": "&#x30FA",
+    "description": "KATAKANA LETTER VO"
+  },
+  {
+    "char": "・",
+    "html": "&#12539;",
+    "hex": "&#x30FB",
+    "description": "KATAKANA MIDDLE DOT"
+  },
+  {
+    "char": "゛",
+    "html": "&#12443;",
+    "hex": "&#x309B",
+    "description": "KATAKANA-HIRAGANA VOICED SOUND MARK"
+  },
+  {
+    "char": "゜",
+    "html": "&#12444;",
+    "hex": "&#x309C",
+    "description": "KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK"
+  },
+  {
+    "char": "ー",
+    "html": "&#12540;",
+    "hex": "&#x30FC",
+    "description": "KATAKANA-HIRAGANA PROLONGED SOUND MARK"
+  },
+  {
+    "char": "ヽ",
+    "html": "&#12541;",
+    "hex": "&#x30FD",
+    "description": "KATAKANA ITERATION MARK"
+  },
+  {
+    "char": "ヾ",
+    "html": "&#12542;",
+    "hex": "&#x30FE",
+    "description": "KATAKANA VOICED ITERATION MARK"
+  },
+  {
+    "char": "ㇰ",
+    "html": "&#12784;",
+    "hex": "&#x31F0",
+    "description": "KATAKANA LETTER SMALL KU"
+  },
+  {
+    "char": "ㇱ",
+    "html": "&#12785;",
+    "hex": "&#x31F1",
+    "description": "KATAKANA LETTER SMALL SI"
+  },
+  {
+    "char": "ㇲ",
+    "html": "&#12786;",
+    "hex": "&#x31F2",
+    "description": "KATAKANA LETTER SMALL SU"
+  },
+  {
+    "char": "ㇳ",
+    "html": "&#12787;",
+    "hex": "&#x31F3",
+    "description": "KATAKANA LETTER SMALL TO"
+  },
+  {
+    "char": "ㇴ",
+    "html": "&#12788;",
+    "hex": "&#x31F4",
+    "description": "KATAKANA LETTER SMALL NU"
+  },
+  {
+    "char": "ㇵ",
+    "html": "&#12789;",
+    "hex": "&#x31F5",
+    "description": "KATAKANA LETTER SMALL HA"
+  },
+  {
+    "char": "ㇶ",
+    "html": "&#12790;",
+    "hex": "&#x31F6",
+    "description": "KATAKANA LETTER SMALL HI"
+  },
+  {
+    "char": "ㇷ",
+    "html": "&#12791;",
+    "hex": "&#x31F7",
+    "description": "KATAKANA LETTER SMALL HU"
+  },
+  {
+    "char": "ㇸ",
+    "html": "&#12792;",
+    "hex": "&#x31F8",
+    "description": "KATAKANA LETTER SMALL HE"
+  },
+  {
+    "char": "ㇹ",
+    "html": "&#12793;",
+    "hex": "&#x31F9",
+    "description": "KATAKANA LETTER SMALL HO"
+  },
+  {
+    "char": "ㇺ",
+    "html": "&#12794;",
+    "hex": "&#x31FA",
+    "description": "KATAKANA LETTER SMALL MU"
+  },
+  {
+    "char": "ㇻ",
+    "html": "&#12795;",
+    "hex": "&#x31FB",
+    "description": "KATAKANA LETTER SMALL RA"
+  },
+  {
+    "char": "ㇼ",
+    "html": "&#12796;",
+    "hex": "&#x31FC",
+    "description": "KATAKANA LETTER SMALL RI"
+  },
+  {
+    "char": "ㇽ",
+    "html": "&#12797;",
+    "hex": "&#x31FD",
+    "description": "KATAKANA LETTER SMALL RU"
+  },
+  {
+    "char": "ㇾ",
+    "html": "&#12798;",
+    "hex": "&#x31FE",
+    "description": "KATAKANA LETTER SMALL RE"
+  },
+  {
+    "char": "ㇿ",
+    "html": "&#12799;",
+    "hex": "&#x31FF",
+    "description": "KATAKANA LETTER SMALL RO"
+  },
+  {
+    "char": "㋐",
+    "html": "&#13008;",
+    "hex": "&#x32D0",
+    "description": "CIRCLED KATAKANA A"
+  },
+  {
+    "char": "㋑",
+    "html": "&#13009;",
+    "hex": "&#x32D1",
+    "description": "CIRCLED KATAKANA I"
+  },
+  {
+    "char": "㋒",
+    "html": "&#13010;",
+    "hex": "&#x32D2",
+    "description": "CIRCLED KATAKANA U"
+  },
+  {
+    "char": "㋓",
+    "html": "&#13011;",
+    "hex": "&#x32D3",
+    "description": "CIRCLED KATAKANA E"
+  },
+  {
+    "char": "㋔",
+    "html": "&#13012;",
+    "hex": "&#x32D4",
+    "description": "CIRCLED KATAKANA O"
+  },
+  {
+    "char": "㋕",
+    "html": "&#13013;",
+    "hex": "&#x32D5",
+    "description": "CIRCLED KATAKANA KA"
+  },
+  {
+    "char": "㋖",
+    "html": "&#13014;",
+    "hex": "&#x32D6",
+    "description": "CIRCLED KATAKANA KI"
+  },
+  {
+    "char": "㋗",
+    "html": "&#13015;",
+    "hex": "&#x32D7",
+    "description": "CIRCLED KATAKANA KU"
+  },
+  {
+    "char": "㋘",
+    "html": "&#13016;",
+    "hex": "&#x32D8",
+    "description": "CIRCLED KATAKANA KE"
+  },
+  {
+    "char": "㋙",
+    "html": "&#13017;",
+    "hex": "&#x32D9",
+    "description": "CIRCLED KATAKANA KO"
+  },
+  {
+    "char": "㋚",
+    "html": "&#13018;",
+    "hex": "&#x32DA",
+    "description": "CIRCLED KATAKANA SA"
+  },
+  {
+    "char": "㋛",
+    "html": "&#13019;",
+    "hex": "&#x32DB",
+    "description": "CIRCLED KATAKANA SI"
+  },
+  {
+    "char": "㋜",
+    "html": "&#13020;",
+    "hex": "&#x32DC",
+    "description": "CIRCLED KATAKANA SU"
+  },
+  {
+    "char": "㋝",
+    "html": "&#13021;",
+    "hex": "&#x32DD",
+    "description": "CIRCLED KATAKANA SE"
+  },
+  {
+    "char": "㋞",
+    "html": "&#13022;",
+    "hex": "&#x32DE",
+    "description": "CIRCLED KATAKANA SO"
+  },
+  {
+    "char": "㋟",
+    "html": "&#13023;",
+    "hex": "&#x32DF",
+    "description": "CIRCLED KATAKANA TA"
+  },
+  {
+    "char": "㋠",
+    "html": "&#13024;",
+    "hex": "&#x32E0",
+    "description": "CIRCLED KATAKANA TI"
+  },
+  {
+    "char": "㋡",
+    "html": "&#13025;",
+    "hex": "&#x32E1",
+    "description": "CIRCLED KATAKANA TU"
+  },
+  {
+    "char": "㋢",
+    "html": "&#13026;",
+    "hex": "&#x32E2",
+    "description": "CIRCLED KATAKANA TE"
+  },
+  {
+    "char": "㋣",
+    "html": "&#13027;",
+    "hex": "&#x32E3",
+    "description": "CIRCLED KATAKANA TO"
+  },
+  {
+    "char": "㋤",
+    "html": "&#13028;",
+    "hex": "&#x32E4",
+    "description": "CIRCLED KATAKANA NA"
+  },
+  {
+    "char": "㋥",
+    "html": "&#13029;",
+    "hex": "&#x32E5",
+    "description": "CIRCLED KATAKANA NI"
+  },
+  {
+    "char": "㋦",
+    "html": "&#13030;",
+    "hex": "&#x32E6",
+    "description": "CIRCLED KATAKANA NU"
+  },
+  {
+    "char": "㋧",
+    "html": "&#13031;",
+    "hex": "&#x32E7",
+    "description": "CIRCLED KATAKANA NE"
+  },
+  {
+    "char": "㋨",
+    "html": "&#13032;",
+    "hex": "&#x32E8",
+    "description": "CIRCLED KATAKANA NO"
+  },
+  {
+    "char": "㋩",
+    "html": "&#13033;",
+    "hex": "&#x32E9",
+    "description": "CIRCLED KATAKANA HA"
+  },
+  {
+    "char": "㋪",
+    "html": "&#13034;",
+    "hex": "&#x32EA",
+    "description": "CIRCLED KATAKANA HI"
+  },
+  {
+    "char": "㋫",
+    "html": "&#13035;",
+    "hex": "&#x32EB",
+    "description": "CIRCLED KATAKANA HU"
+  },
+  {
+    "char": "㋬",
+    "html": "&#13036;",
+    "hex": "&#x32EC",
+    "description": "CIRCLED KATAKANA HE"
+  },
+  {
+    "char": "㋭",
+    "html": "&#13037;",
+    "hex": "&#x32ED",
+    "description": "CIRCLED KATAKANA HO"
+  },
+  {
+    "char": "㋮",
+    "html": "&#13038;",
+    "hex": "&#x32EE",
+    "description": "CIRCLED KATAKANA MA"
+  },
+  {
+    "char": "㋯",
+    "html": "&#13039;",
+    "hex": "&#x32EF",
+    "description": "CIRCLED KATAKANA MI"
+  },
+  {
+    "char": "㋰",
+    "html": "&#13040;",
+    "hex": "&#x32F0",
+    "description": "CIRCLED KATAKANA MU"
+  },
+  {
+    "char": "㋱",
+    "html": "&#13041;",
+    "hex": "&#x32F1",
+    "description": "CIRCLED KATAKANA ME"
+  },
+  {
+    "char": "㋲",
+    "html": "&#13042;",
+    "hex": "&#x32F2",
+    "description": "CIRCLED KATAKANA MO"
+  },
+  {
+    "char": "㋳",
+    "html": "&#13043;",
+    "hex": "&#x32F3",
+    "description": "CIRCLED KATAKANA YA"
+  },
+  {
+    "char": "㋴",
+    "html": "&#13044;",
+    "hex": "&#x32F4",
+    "description": "CIRCLED KATAKANA YU"
+  },
+  {
+    "char": "㋵",
+    "html": "&#13045;",
+    "hex": "&#x32F5",
+    "description": "CIRCLED KATAKANA YO"
+  },
+  {
+    "char": "㋶",
+    "html": "&#13046;",
+    "hex": "&#x32F6",
+    "description": "CIRCLED KATAKANA RA"
+  },
+  {
+    "char": "㋷",
+    "html": "&#13047;",
+    "hex": "&#x32F7",
+    "description": "CIRCLED KATAKANA RI"
+  },
+  {
+    "char": "㋸",
+    "html": "&#13048;",
+    "hex": "&#x32F8",
+    "description": "CIRCLED KATAKANA RU"
+  },
+  {
+    "char": "㋹",
+    "html": "&#13049;",
+    "hex": "&#x32F9",
+    "description": "CIRCLED KATAKANA RE"
+  },
+  {
+    "char": "㋺",
+    "html": "&#13050;",
+    "hex": "&#x32FA",
+    "description": "CIRCLED KATAKANA RO"
+  },
+  {
+    "char": "㋻",
+    "html": "&#13051;",
+    "hex": "&#x32FB",
+    "description": "CIRCLED KATAKANA WA"
+  },
+  {
+    "char": "㋼",
+    "html": "&#13052;",
+    "hex": "&#x32FC",
+    "description": "CIRCLED KATAKANA WI"
+  },
+  {
+    "char": "㋽",
+    "html": "&#13053;",
+    "hex": "&#x32FD",
+    "description": "CIRCLED KATAKANA WE"
+  },
+  {
+    "char": "㋾",
+    "html": "&#13054;",
+    "hex": "&#x32FE",
+    "description": "CIRCLED KATAKANA WO"
+  },
+  {
+    "char": "･",
+    "html": "&#65381;",
+    "hex": "&#xFF65",
+    "description": "HALFWIDTH KATAKANA MIDDLE DOT"
+  },
+  {
+    "char": "ｦ",
+    "html": "&#65382;",
+    "hex": "&#xFF66",
+    "description": "HALFWIDTH KATAKANA LETTER WO"
+  },
+  {
+    "char": "ｧ",
+    "html": "&#65383;",
+    "hex": "&#xFF67",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL A"
+  },
+  {
+    "char": "ｨ",
+    "html": "&#65384;",
+    "hex": "&#xFF68",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL I"
+  },
+  {
+    "char": "ｩ",
+    "html": "&#65385;",
+    "hex": "&#xFF69",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL U"
+  },
+  {
+    "char": "ｪ",
+    "html": "&#65386;",
+    "hex": "&#xFF6A",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL E"
+  },
+  {
+    "char": "ｫ",
+    "html": "&#65387;",
+    "hex": "&#xFF6B",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL O"
+  },
+  {
+    "char": "ｬ",
+    "html": "&#65388;",
+    "hex": "&#xFF6C",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL YA"
+  },
+  {
+    "char": "ｭ",
+    "html": "&#65389;",
+    "hex": "&#xFF6D",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL YU"
+  },
+  {
+    "char": "ｮ",
+    "html": "&#65390;",
+    "hex": "&#xFF6E",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL YO"
+  },
+  {
+    "char": "ｯ",
+    "html": "&#65391;",
+    "hex": "&#xFF6F",
+    "description": "HALFWIDTH KATAKANA LETTER SMALL TU"
+  },
+  {
+    "char": "ｰ",
+    "html": "&#65392;",
+    "hex": "&#xFF70",
+    "description": "HALFWIDTH KATAKANA-HIRAGANA PROLONGED SOUND MARK"
+  },
+  {
+    "char": "ｱ",
+    "html": "&#65393;",
+    "hex": "&#xFF71",
+    "description": "HALFWIDTH KATAKANA LETTER A"
+  },
+  {
+    "char": "ｲ",
+    "html": "&#65394;",
+    "hex": "&#xFF72",
+    "description": "HALFWIDTH KATAKANA LETTER I"
+  },
+  {
+    "char": "ｳ",
+    "html": "&#65395;",
+    "hex": "&#xFF73",
+    "description": "HALFWIDTH KATAKANA LETTER U"
+  },
+  {
+    "char": "ｴ",
+    "html": "&#65396;",
+    "hex": "&#xFF74",
+    "description": "HALFWIDTH KATAKANA LETTER E"
+  },
+  {
+    "char": "ｵ",
+    "html": "&#65397;",
+    "hex": "&#xFF75",
+    "description": "HALFWIDTH KATAKANA LETTER O"
+  },
+  {
+    "char": "ｶ",
+    "html": "&#65398;",
+    "hex": "&#xFF76",
+    "description": "HALFWIDTH KATAKANA LETTER KA"
+  },
+  {
+    "char": "ｷ",
+    "html": "&#65399;",
+    "hex": "&#xFF77",
+    "description": "HALFWIDTH KATAKANA LETTER KI"
+  },
+  {
+    "char": "ｸ",
+    "html": "&#65400;",
+    "hex": "&#xFF78",
+    "description": "HALFWIDTH KATAKANA LETTER KU"
+  },
+  {
+    "char": "ｹ",
+    "html": "&#65401;",
+    "hex": "&#xFF79",
+    "description": "HALFWIDTH KATAKANA LETTER KE"
+  },
+  {
+    "char": "ｺ",
+    "html": "&#65402;",
+    "hex": "&#xFF7A",
+    "description": "HALFWIDTH KATAKANA LETTER KO"
+  },
+  {
+    "char": "ｻ",
+    "html": "&#65403;",
+    "hex": "&#xFF7B",
+    "description": "HALFWIDTH KATAKANA LETTER SA"
+  },
+  {
+    "char": "ｼ",
+    "html": "&#65404;",
+    "hex": "&#xFF7C",
+    "description": "HALFWIDTH KATAKANA LETTER SI"
+  },
+  {
+    "char": "ｽ",
+    "html": "&#65405;",
+    "hex": "&#xFF7D",
+    "description": "HALFWIDTH KATAKANA LETTER SU"
+  },
+  {
+    "char": "ｾ",
+    "html": "&#65406;",
+    "hex": "&#xFF7E",
+    "description": "HALFWIDTH KATAKANA LETTER SE"
+  },
+  {
+    "char": "ｿ",
+    "html": "&#65407;",
+    "hex": "&#xFF7F",
+    "description": "HALFWIDTH KATAKANA LETTER SO"
+  },
+  {
+    "char": "ﾀ",
+    "html": "&#65408;",
+    "hex": "&#xFF80",
+    "description": "HALFWIDTH KATAKANA LETTER TA"
+  },
+  {
+    "char": "ﾁ",
+    "html": "&#65409;",
+    "hex": "&#xFF81",
+    "description": "HALFWIDTH KATAKANA LETTER TI"
+  },
+  {
+    "char": "ﾂ",
+    "html": "&#65410;",
+    "hex": "&#xFF82",
+    "description": "HALFWIDTH KATAKANA LETTER TU"
+  },
+  {
+    "char": "ﾃ",
+    "html": "&#65411;",
+    "hex": "&#xFF83",
+    "description": "HALFWIDTH KATAKANA LETTER TE"
+  },
+  {
+    "char": "ﾄ",
+    "html": "&#65412;",
+    "hex": "&#xFF84",
+    "description": "HALFWIDTH KATAKANA LETTER TO"
+  },
+  {
+    "char": "ﾅ",
+    "html": "&#65413;",
+    "hex": "&#xFF85",
+    "description": "HALFWIDTH KATAKANA LETTER NA"
+  },
+  {
+    "char": "ﾆ",
+    "html": "&#65414;",
+    "hex": "&#xFF86",
+    "description": "HALFWIDTH KATAKANA LETTER NI"
+  },
+  {
+    "char": "ﾇ",
+    "html": "&#65415;",
+    "hex": "&#xFF87",
+    "description": "HALFWIDTH KATAKANA LETTER NU"
+  },
+  {
+    "char": "ﾈ",
+    "html": "&#65416;",
+    "hex": "&#xFF88",
+    "description": "HALFWIDTH KATAKANA LETTER NE"
+  },
+  {
+    "char": "ﾉ",
+    "html": "&#65417;",
+    "hex": "&#xFF89",
+    "description": "HALFWIDTH KATAKANA LETTER NO"
+  },
+  {
+    "char": "ﾊ",
+    "html": "&#65418;",
+    "hex": "&#xFF8A",
+    "description": "HALFWIDTH KATAKANA LETTER HA"
+  },
+  {
+    "char": "ﾋ",
+    "html": "&#65419;",
+    "hex": "&#xFF8B",
+    "description": "HALFWIDTH KATAKANA LETTER HI"
+  },
+  {
+    "char": "ﾌ",
+    "html": "&#65420;",
+    "hex": "&#xFF8C",
+    "description": "HALFWIDTH KATAKANA LETTER HU"
+  },
+  {
+    "char": "ﾍ",
+    "html": "&#65421;",
+    "hex": "&#xFF8D",
+    "description": "HALFWIDTH KATAKANA LETTER HE"
+  },
+  {
+    "char": "ﾎ",
+    "html": "&#65422;",
+    "hex": "&#xFF8E",
+    "description": "HALFWIDTH KATAKANA LETTER HO"
+  },
+  {
+    "char": "ﾏ",
+    "html": "&#65423;",
+    "hex": "&#xFF8F",
+    "description": "HALFWIDTH KATAKANA LETTER MA"
+  },
+  {
+    "char": "ﾐ",
+    "html": "&#65424;",
+    "hex": "&#xFF90",
+    "description": "HALFWIDTH KATAKANA LETTER MI"
+  },
+  {
+    "char": "ﾑ",
+    "html": "&#65425;",
+    "hex": "&#xFF91",
+    "description": "HALFWIDTH KATAKANA LETTER MU"
+  },
+  {
+    "char": "ﾒ",
+    "html": "&#65426;",
+    "hex": "&#xFF92",
+    "description": "HALFWIDTH KATAKANA LETTER ME"
+  },
+  {
+    "char": "ﾓ",
+    "html": "&#65427;",
+    "hex": "&#xFF93",
+    "description": "HALFWIDTH KATAKANA LETTER MO"
+  },
+  {
+    "char": "ﾔ",
+    "html": "&#65428;",
+    "hex": "&#xFF94",
+    "description": "HALFWIDTH KATAKANA LETTER YA"
+  },
+  {
+    "char": "ﾕ",
+    "html": "&#65429;",
+    "hex": "&#xFF95",
+    "description": "HALFWIDTH KATAKANA LETTER YU"
+  },
+  {
+    "char": "ﾖ",
+    "html": "&#65430;",
+    "hex": "&#xFF96",
+    "description": "HALFWIDTH KATAKANA LETTER YO"
+  },
+  {
+    "char": "ﾗ",
+    "html": "&#65431;",
+    "hex": "&#xFF97",
+    "description": "HALFWIDTH KATAKANA LETTER RA"
+  },
+  {
+    "char": "ﾘ",
+    "html": "&#65432;",
+    "hex": "&#xFF98",
+    "description": "HALFWIDTH KATAKANA LETTER RI"
+  },
+  {
+    "char": "ﾙ",
+    "html": "&#65433;",
+    "hex": "&#xFF99",
+    "description": "HALFWIDTH KATAKANA LETTER RU"
+  },
+  {
+    "char": "ﾚ",
+    "html": "&#65434;",
+    "hex": "&#xFF9A",
+    "description": "HALFWIDTH KATAKANA LETTER RE"
+  },
+  {
+    "char": "ﾛ",
+    "html": "&#65435;",
+    "hex": "&#xFF9B",
+    "description": "HALFWIDTH KATAKANA LETTER RO"
+  },
+  {
+    "char": "ﾜ",
+    "html": "&#65436;",
+    "hex": "&#xFF9C",
+    "description": "HALFWIDTH KATAKANA LETTER WA"
+  },
+  {
+    "char": "ﾝ",
+    "html": "&#65437;",
+    "hex": "&#xFF9D",
+    "description": "HALFWIDTH KATAKANA LETTER N"
+  },
+  {
+    "char": "ﾞ",
+    "html": "&#65438;",
+    "hex": "&#xFF9E",
+    "description": "HALFWIDTH KATAKANA VOICED SOUND MARK"
+  },
+  {
+    "char": "ﾟ",
+    "html": "&#65439;",
+    "hex": "&#xFF9F",
+    "description": "HALFWIDTH KATAKANA SEMI-VOICED SOUND MARK"
+  }
+]

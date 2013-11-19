@@ -106,8 +106,8 @@ function set_layout () {
       $cardList.append(
         createSelectable(
           'li',
-          createCardCheckbox(card.Japanese, name, card.Japanese, true),
-          card.Japanese,
+          createCardCheckbox(card.Romaji, name, card.Romaji, true),
+          card.Romaji,
           card.English
         )
       );
@@ -316,7 +316,7 @@ function createCardCheckbox (name, category, value, checked) {
     }).on('change', function (event) {
       event.preventDefault();
       event.stopPropagation();
-      var id = hashFlashcard({Japanese:name, category:category});
+      var id = hashFlashcard({Romaji:name, category:category});
       if (this.checked) {
         delete options.exclude[id];
       } else {

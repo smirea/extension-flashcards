@@ -32,8 +32,8 @@ var defaultOptions = {
   progressTime: 15,
   progressHoverHide: true,
   exclude: {},
-  layout: ('Japanese English story phrase').split(' '),
-  displayOrder: ('English Japanese phrase story').split(' '),
+  layout: ('Romaji English story phrase').split(' '),
+  displayOrder: ('English Romaji phrase story').split(' '),
 };
 
 // Make sure all the options have their defaults.
