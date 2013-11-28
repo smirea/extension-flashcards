@@ -15,34 +15,34 @@ It started off as a self-educational tool to easily learn the words from Ken Can
 * You can check the syntax for all flashcards in: [the flashcards.json file](https://github.com/smirea/extension-flashcards/blob/master/flashcards.json)
 * Sample flashcards JSON for 3 flashcards (Omae, Ore, Wakaru):
 
-    ```json
-    [
-      {
-        "category": "JTA - Lesson 1",
-        "English": "You",
-        "Romaji": "Omae",
-        "Hiragana": "おまえ",
-        "Katakana": "オマエ",
-        "story": "The ugliest, most hideous person you can think of.",
-        "phrase": "“OH MY god, YOU are really ugly”"
-      },
-      {
-        "category": "JTA - Lesson 1",
-        "English": "I/Me",
-        "Romaji": "Ore",
-        "Hiragana": "おれ",
-        "Katakana": "オレ",
-        "story": "Poor Orphan boy asks British man for money, and then gets buried under mountain of money.",
-        "phrase": "“OH REally?, I don’t have much…”"
-      },
-      {
-        "category": "JTA - Lesson 1",
-        "English": "To understand",
-        "Romaji": "Wakaru",
-        "Hiragana": "わかる",
-        "Katakana": "ワカル",
-        "story": "Playing a game called wack-a-roo, but every time you try to, they kick you in the face.",
-        "phrase": "“I don’t UNDERSTAND how were supposed to WACK A ROO!”"
-      }
-    ]
-    ```
+```json
+[
+  {
+    "category": "JTA - Lesson 1",
+    "English": "You",
+    "Romaji": "Omae",
+    "Hiragana": "おまえ",
+    "Katakana": "オマエ",
+    "story": "The ugliest, most hideous person you can think of.",
+    "phrase": "“OH MY god, YOU are really ugly”"
+  },
+  {
+    "category": "JTA - Lesson 1",
+    "English": "I/Me",
+    "Romaji": "Ore",
+    "Hiragana": "おれ",
+    "Katakana": "オレ",
+    "story": "Poor Orphan boy asks British man for money, and then gets buried under mountain of money.",
+    "phrase": "“OH REally?, I don’t have much…”"
+  },
+  {
+    "category": "JTA - Lesson 1",
+    "English": "To understand",
+    "Romaji": "Wakaru",
+    "Hiragana": "わかる",
+    "Katakana": "ワカル",
+    "story": "Playing a game called wack-a-roo, but every time you try to, they kick you in the face.",
+    "phrase": "“I don’t UNDERSTAND how were supposed to WACK A ROO!”"
+  }
+]
+```
