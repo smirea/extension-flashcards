@@ -61,7 +61,7 @@ footer a {
   width: 100%;
 }
 
-.option + .option {
+.option + .option, * + .option:first-of-type {
   border-top: 1px solid #ddd;
 }
 
@@ -114,14 +114,11 @@ footer a {
   height: 100%;
 }
 
-.content.add-section {
-  font-size: 0.85em;
-}
-
 .content.add-section > * {
   display: inline-block;
-  height: 300px;
+  height: 200px;
   width: 260px;
+  font-size: 0.85em;
   vertical-align: top;
   overflow: auto;
 }
@@ -381,6 +378,27 @@ output + output, input + output {
 
 .warn:before {
   content: '⚠ ';
+}
+
+.show-cards {
+  display: block;
+  border-radius: 10px;
+  border: 3px solid #ddf;
+  background: #6eb0ff;
+  width: 340px;
+  margin: 30px auto;
+  padding: 10px;
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff!important;
+}
+
+.show-cards:hover {
+  background: lightgreen;
+  cursor: pointer;
+  color: #000!important;
 }
 
 .clearfix:after {

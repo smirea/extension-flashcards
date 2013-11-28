@@ -36,6 +36,18 @@ function set_layout () {
   var card = cards[Math.floor(Math.random () * cards.length)];
   var exclude = ('category').split(' ');
 
+  jqElement('a').
+    attr({
+      href: 'javascript:void(0)',
+    }).
+    addClass('show-cards').
+    html('Click me to show some cards!').
+    on('click', function () {
+      port.post('getFlashcardSet');
+      window.close();
+    }).
+    appendTo($main);
+
   addOption(
     'General',
     'A general set of options.',
@@ -372,12 +384,14 @@ function addOption () {
  * @return {jQuery}
  */
 function createOption (title, description, $content, oneColumn) {
+  var $title = !title ? $() : jqElement('div').addClass('title').html(title);
+  var $des = !description ? $() : jqElement('div').addClass('description').html(description);
+
+  title = title || 'random-title-' + Math.floor(Math.random() * 1000000);
   var nameClass = 'name-' + title.trim().toLowerCase().replace(/\s+/g, '-');
+
   return jqElement('div').addClass('option clearfix ' + nameClass).append(
-    jqElement('div').addClass('details ' + (oneColumn ? 'one-column' : '')).append(
-      jqElement('div').addClass('title').html(title),
-      jqElement('div').addClass('description').html(description)
-    ),
+    jqElement('div').addClass('details ' + (oneColumn ? 'one-column' : '')).append($title, $des),
     jqElement('div').addClass('content').append($content)
   );
 }
