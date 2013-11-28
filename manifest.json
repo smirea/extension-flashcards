@@ -1,6 +1,6 @@
 {
   "name": "Japanese Flashcards",
-  "description": "Pops up flashcards at times to help you learn japanese words.",
+  "description": "Pops up flashcards at times to help you learn Japanese words. \n\nYou can add, edit or delete your own flashcards and customize how the cards appear, the order of the hints shown and many more.\n\n",
   "version": "0.1",
   "icons": {
     "16": "images/logo-32.png",
@@ -23,8 +23,7 @@
     "tabs",
     "notifications",
     "http://*/*",
-    "https://*/*",
-    "file://*/*"
+    "https://*/*"
   ],
   "manifest_version": 2,
   "web_accessible_resources": [
