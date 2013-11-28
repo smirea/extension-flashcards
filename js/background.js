@@ -101,7 +101,7 @@ function setTimer () {
 function sendFlashcards (maxCards) {
   maxCards = maxCards || options.setSize;
   var available = flashcards.filter(function (c) { return !(hashFlashcard(c) in options.exclude); });
-  available.sort(function (a, b) { return Math.floor(Math.random() * 3) - 1; });
+  available.shuffle();
 
   var cardDeck;
   if (available.length <= maxCards) {

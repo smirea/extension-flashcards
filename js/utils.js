@@ -1,4 +1,13 @@
 /**
+ * Shuffle an array. Does a much better distribution than using the .sort() method.
+ * @return {Array}
+ */
+Array.prototype.shuffle = function () {
+  for(var j, x, i = this.length; i; j = Math.floor(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
+  return this;
+};
+
+/**
  * Perform fuzzy searching on the string.
  *
  * @param  {String} str The string to match against.
