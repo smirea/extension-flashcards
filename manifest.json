@@ -1,7 +1,7 @@
 {
   "name": "Japanese Flashcards",
   "description": "Pops up flashcards at times to help you learn Japanese words.",
-  "version": "0.1",
+  "version": "0.2",
   "icons": {
     "16": "images/logo-32.png",
     "32": "images/logo-32.png",
