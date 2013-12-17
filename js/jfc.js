@@ -60,6 +60,7 @@ function showFlashcard (card) {
   stoppetProgressBar = options.progressDisabled || !options.progressTime || options.progressTime <= 0;
 
   $wrapper.remove();
+  $('.jfc-flashcard').remove();
   $wrapper = jqElement('div');
   var get = function (name) {
     var disp = options.layout.indexOf(name) > -1;
@@ -100,12 +101,6 @@ function showFlashcard (card) {
     $wrapper.append(get(options.layout[i]));
   }
 
-  // // Add remaining keys.
-  // for (var key in card) {
-  //   if (options.layout.indexOf(key) > -1) { continue; }
-  //   $wrapper.append(get(key));
-  // }
-
   // Highlight connectors in phrase.
   if ('phrase' in card) {
     var $name = $wrapper.find('.jfc-phrase .jfc-name').remove();
@@ -120,6 +115,12 @@ function showFlashcard (card) {
       );
     }
     $wrapper.find('.jfc-phrase').html(phrase).prepend($name);
+  }
+
+  if ('category' in card) {
+    $wrapper.append(
+      jqElement('div').addClass('jfc-category').html(card.category)
+    );
   }
 
   // Close button.

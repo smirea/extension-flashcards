@@ -194,6 +194,26 @@ function set_layout () {
     true
   );
 
+  addOption(
+    'About', 'General information about this extension.',
+    jqElement('div').append(
+      'I developed this extension to better help me learn and remember the Japanese ' +
+      'words used in the <a href="http://www.japanesethroughanime.com" target="_blank">' +
+      'Japanese Through Anime</a> ' +
+      'course taught by Ken Cannon, which is awesome and you should definitely check it out. ' +
+      '<hr /> You can view the full project on my ' +
+      '<a href="https://github.com/smirea/extension-flashcards" target="_blank">GitHub page</a>. ' +
+      '(if you want to contribute, be my guest or send me an email)' +
+      '<hr /> If you like it, please go ahead and give it a review on ' +
+      '<a href="https://chrome.google.com/webstore/detail/japanese-flashcards/ncjogmjihmibakogjjahbpdpgdfdmogd" '+
+      'target="_blank">its Chrome Web Store page</a>.' +
+      '<hr> For bugs/inquiries either send me an email at: ' +
+      '<a href="mailto:steven.mirea@gmail.com">steven.mirea@gmail.com</a> ' +
+      'or even better <a href="https://github.com/smirea/extension-flashcards/issues" target="_blank"> ' +
+      'post a new GitHub issue</a> and I\'ll can get back to you as soon as I can.'
+    )
+  );
+
   // Add values to all .auto-complete fields.
   $('.auto-complete').each(function () {
     if (!this.name) {

@@ -28,7 +28,7 @@ var dependencies = [
 var defaultOptions = {
   enabled: true,
   disableGlobalHotkeys: false,
-  minDelay: 30,
+  minDelay: 45,
   setSize: 3,
   progressDisabled: false,
   progressTime: 15,
