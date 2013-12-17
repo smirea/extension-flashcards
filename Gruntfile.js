@@ -35,12 +35,7 @@ module.exports = function(grunt) {
         src: '**',
         dest: 'chrome-extension.zip',
         router: function (filepath) {
-          if (isIgnored(filepath)) {
-            // grunt.log.writeln('Excluding %s', filepath);
-            return false;
-          }
-          // grunt.log.oklns('zip: %s', filepath);
-          return filepath;
+          return !isIgnored(filepath);
         },
       }
     },
