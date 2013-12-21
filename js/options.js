@@ -470,7 +470,7 @@ function createAddSection () {
     var $content = jqElement('ul').addClass('target');
 
     for (var i=0; i<elements.length; ++i) {
-      $content.append(jqElement('li').append(jqElement('pre').append(JSON.stringify(elements[i]))));
+      $content.append(jqElement('li').append(jqElement('pre').append(JSON5.stringify(elements[i]))));
     }
 
     return jqElement('div').addClass('toggle').append(
@@ -489,7 +489,7 @@ function createAddSection () {
     $result.empty();
 
     var json;
-    try { json = JSON.parse($textarea.val()); } catch (ex) {
+    try { json = JSON5.parse($textarea.val()); } catch (ex) {
       error('Invalid format: ' + ex);
       return;
     }
@@ -526,7 +526,7 @@ function createAddSection () {
               cards.push(c[name][i]);
             }
           }
-          ls.set('flashcards', cards);
+          saveFlashcards(true, cards);
           $textarea.val('');
           $result.empty();
           backgroundOptionsRefreshed();

@@ -154,30 +154,12 @@ function setFlashcards (callback) {
   callback = callback || function () {};
   flashcards = ls.get('flashcards');
 
-  if (flashcards && Array.isArray('flashcards') && flashcards.length > 0) {
+  if (flashcards && Array.isArray(flashcards) && flashcards.length > 0) {
     callback();
     return;
   }
 
   loadData(null, callback);
-}
-
-/**
- * Makes sure every flashcard has a unique __id attribute.
- */
-function setFlashcardIDs () {
-  var used = flashcards.filter(function (card) { return '__id' in card; });
-  used = used.map(function (card) { return card.__id; });
-
-  var id = 1;
-  for (var i=0; i<flashcards.length; ++i) {
-    if ('__id' in flashcards[i]) { continue; }
-    for (id; used.indexOf(id) > -1; ++id) {}
-    flashcards[i].__id = id;
-    used.push(id);
-  }
-
-  saveFlashcards();
 }
 
 function handleUpdate () {
@@ -204,6 +186,7 @@ function handleUpdate () {
 function init () {
   reloadOptions();
   setFlashcards();
+  setFlashcardIDs(flashcards);
   init_ports(handlers);
   if (!options.disableGlobalHotkeys) { init_global_hotkeys(); }
   handleUpdate();
@@ -284,14 +267,6 @@ var init_ports = (function (scope) {
 })(window);
 
 /**
- * Save the flashcards in localStorage and make sure they have unique IDs.
- */
-function saveFlashcards (updateIDs) {
-  updateIDs && setFlashcardIDs();
-  ls.set('flashcards', flashcards);
-}
-
-/**
  * Loads a flashcards file.
  * @param  {String}   url      If undefined, then it will load the default one.
  * @param  {Function} callback
@@ -300,9 +275,11 @@ function saveFlashcards (updateIDs) {
 function loadData (url, callback) {
   url = url || chrome.extension.getURL('flashcards.json');
   callback = callback || function _no_callback () {};
+  console.warn('Resetting flashcards, loading from file: %s', url);
+
   return $.getJSON(url, function (data) {
     flashcards = data;
-    saveFlashcards(true);
+    saveFlashcards(true, flashcards);
     callback(data, url);
   }).fail(function(jqxhr, textStatus, error) {
     console.error("Failed to get data (%s): \n  %s\n  %s", url, textStatus, error.toString());

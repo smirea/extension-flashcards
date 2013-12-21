@@ -104,6 +104,36 @@ var ls = {
 };
 
 /**
+ * Save the flashcards in localStorage and make sure they have unique IDs.
+ * @param  {Boolean} updateIDs Whether to run setFlashcardsIDs or not.
+ * @param  {[type]} cards
+ */
+function saveFlashcards (updateIDs, cards) {
+  updateIDs && setFlashcardIDs(cards);
+  ls.set('flashcards', cards);
+}
+
+/**
+ * Makes sure every flashcard has a unique __id attribute.
+ * @param {Array} cards
+ */
+function setFlashcardIDs (cards) {
+  var used = cards.filter(function (card) { return '__id' in card; });
+  used = used.map(function (card) { return card.__id; });
+
+  var id = 1;
+  for (var i=0; i<cards.length; ++i) {
+    if ('__id' in cards[i]) { continue; }
+    for (id; used.indexOf(id) > -1; ++id) {}
+    cards[i].__id = id;
+    used.push(id);
+  }
+
+  saveFlashcards(false, cards);
+}
+
+
+/**
  * Returns the css properties of an element.
  * Useful for javascript css toggle.
  * @param  {jQuery} $elem
