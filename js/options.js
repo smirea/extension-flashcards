@@ -102,7 +102,7 @@ function set_layout () {
       add(createList('layout', layoutKeys, card, 'Visible Elements:').addClass('layout-connected')).
       add(createList(
         'layoutDisabled',
-        keys.filter(function (k) { return layoutKeys.indexOf(k) == -1; }),
+        keys.filter(function (k) { return layoutKeys.indexOf(k) == -1 && options.privateKeyNames.indexOf(k) == -1; }),
         card,
         'Hidden elements:'
       ).addClass('layout-connected'))
@@ -139,12 +139,13 @@ function set_layout () {
   for (var name in categories) {
     var $cardList = jqElement('ul').addClass('card-list');
 
+    // Add mini-flashcards to the category.
     for (var i=0; i<categories[name].length; ++i) {
       var card = categories[name][i];
       $cardList.append(
         createSelectable(
           'li',
-          createCardCheckbox(card.Romaji, name, card.Romaji, true),
+          createCardCheckbox(card, card.Romaji, true),
           card.Romaji,
           card.English
         )
@@ -238,9 +239,8 @@ function set_layout () {
   });
 
   // Also add the exclude ones.
-  for (var info in options.exclude) {
-    var arr = info.split('|');
-    var cbx = $cards.find('.cardCheckbox input[type="checkbox"][name="' + arr[1] + '"][category="' + arr[0] + '"]');
+  for (var __id in options.exclude) {
+    var cbx = $cards.find('.cardCheckbox input[type="checkbox"]#card-' + __id);
     cbx.trigger('set-checked', [false]);
   }
 }
@@ -329,17 +329,16 @@ function createSelectable (tag, $content, block1, block2) {
 
 /**
  * Returns a jQuery ready checkbox button.
- * @param  {String} name
- * @param  {String} category
+ * @param  {Object} card It must contain the __id property.
  * @param  {String} value
  * @param  {Boolean} checked
  * @return {jQuery}
  */
-function createCardCheckbox (name, category, value, checked) {
+function createCardCheckbox (card, value, checked) {
   value = value || 'on';
   checked = !!checked;
 
-  var id = 'random-id-' + name + '-' + Math.floor(Math.random() * 100000);
+  var id = 'card-' + card.__id;
   var $checkbox = jqElement('input');
   var $wrapper = jqElement('label');
 
@@ -352,11 +351,10 @@ function createCardCheckbox (name, category, value, checked) {
   };
 
   $checkbox.attr({
-      type:'checkbox',
-      id:id,
-      value:value,
-      name:name,
-      category:category,
+      type: 'checkbox',
+      id: id,
+      value: value,
+      name: 'card-' + card.__id,
     }).
     prop('checked', checked).
     on('set-checked', function (event, value) {
@@ -366,11 +364,10 @@ function createCardCheckbox (name, category, value, checked) {
     }).on('change', function (event) {
       event.preventDefault();
       event.stopPropagation();
-      var id = hashFlashcard({Romaji:name, category:category});
       if (this.checked) {
-        delete options.exclude[id];
+        delete options.exclude[card.__id];
       } else {
-        options.exclude[id] = true;
+        options.exclude[card.__id] = true;
       }
       saveOptions();
     });

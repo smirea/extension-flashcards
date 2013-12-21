@@ -37,6 +37,9 @@ var defaultOptions = {
   layout: ('Romaji English story phrase').split(' '),
   layoutDisabled: ('Katakana Hiragana').split(' '),
   displayOrder: ('Katakana Hiragana Romaji story phrase English').split(' '),
+  // These are keys in the flashcard models that are used by the system and will not be displayed on
+  //  the flashcard itself.
+  privateKeyNames: ['__id'],
 };
 
 // All handlers a port can post to. Anything else will raise an Exception.
@@ -100,7 +103,7 @@ function setTimer () {
 
 function sendFlashcards (maxCards) {
   maxCards = maxCards || options.setSize;
-  var available = flashcards.filter(function (c) { return !(hashFlashcard(c) in options.exclude); });
+  var available = flashcards.filter(function (card) { return !(card.__id in options.exclude); });
   available.shuffle();
 
   var cardDeck;
@@ -144,11 +147,58 @@ function reloadOptions () {
   setTimer();
 }
 
-function setFlashcards () {
+/**
+ * Loads the flashcards from localStorage or from the JSON file if they are undefined.
+ */
+function setFlashcards (callback) {
+  callback = callback || function () {};
   flashcards = ls.get('flashcards');
-  if (!flashcards || typeof flashcards != 'object') {
-    loadData();
+
+  if (flashcards && Array.isArray('flashcards') && flashcards.length > 0) {
+    callback();
+    return;
   }
+
+  loadData(null, callback);
+}
+
+/**
+ * Makes sure every flashcard has a unique __id attribute.
+ */
+function setFlashcardIDs () {
+  var used = flashcards.filter(function (card) { return '__id' in card; });
+  used = used.map(function (card) { return card.__id; });
+
+  var id = 1;
+  for (var i=0; i<flashcards.length; ++i) {
+    if ('__id' in flashcards[i]) { continue; }
+    for (id; used.indexOf(id) > -1; ++id) {}
+    flashcards[i].__id = id;
+    used.push(id);
+  }
+
+  saveFlashcards();
+}
+
+function handleUpdate () {
+  // The second an update is available, install it!
+  chrome.runtime.onUpdateAvailable.addListener(function (details) { chrome.runtime.reload() });
+
+  // TODO: delete this in like a month or so
+  // A previous version used the string "card.category|card.Romaji" as an unique id.
+  // New version assigns an unique id to all cards, therefore we need to migrate.
+  chrome.runtime.onInstalled.addListener(function (details) {
+    if (details.reason != 'update') { return; }
+    setFlashcards(function () {
+      // Delete all old IDs from the exclude
+      for (var oldId in options.exclude) {
+        if (oldId.indexOf('|') == -1) { continue; }
+        delete options.exclude[oldId];
+      }
+      ls.set('options', options);
+    });
+  })
+
 }
 
 function init () {
@@ -156,6 +206,7 @@ function init () {
   setFlashcards();
   init_ports(handlers);
   if (!options.disableGlobalHotkeys) { init_global_hotkeys(); }
+  handleUpdate();
 }
 
 /**
@@ -233,6 +284,14 @@ var init_ports = (function (scope) {
 })(window);
 
 /**
+ * Save the flashcards in localStorage and make sure they have unique IDs.
+ */
+function saveFlashcards (updateIDs) {
+  updateIDs && setFlashcardIDs();
+  ls.set('flashcards', flashcards);
+}
+
+/**
  * Loads a flashcards file.
  * @param  {String}   url      If undefined, then it will load the default one.
  * @param  {Function} callback
@@ -242,11 +301,11 @@ function loadData (url, callback) {
   url = url || chrome.extension.getURL('flashcards.json');
   callback = callback || function _no_callback () {};
   return $.getJSON(url, function (data) {
-    callback(data, url);
     flashcards = data;
-    ls.set('flashcards', flashcards);
-  }).fail(function( jqxhr, textStatus, error ) {
-    console.error( "Failed to get data (%s): \n  %s\n  %s", url, textStatus, error.toString());
+    saveFlashcards(true);
+    callback(data, url);
+  }).fail(function(jqxhr, textStatus, error) {
+    console.error("Failed to get data (%s): \n  %s\n  %s", url, textStatus, error.toString());
   })
 }
 
