@@ -63,6 +63,7 @@ var ls = {
     }
     return this;
   },
+
   /**
    * Get a key from localStorage. Auto JSON.parse
    * @param  {String} key
@@ -80,16 +81,27 @@ var ls = {
       return defaultValue;
     }
   },
-};
 
-/**
- * Creates a unique string for a flashcard.
- * @param  {[type]} card [description]
- * @return {[type]}      [description]
- */
-function hashFlashcard (card) {
-  return (card.category || '') + '|' + (card.Romaji || '');
-}
+  /**
+   * Deletes a key from localStorage
+   * @param  {String} key
+   * @return {Boolean}
+   */
+  remove: function (key) {
+    return (delete localStorage[key]);
+  },
+
+  /**
+   * Prints out an indented stringified JSON of the value.
+   * Takes the same arguments as ls.get();
+   * @see get
+   * @return {Object} chainable
+   */
+  debug: function () {
+    console.log(JSON.stringify(ls.get.apply(ls, arguments), null, 2));
+    return this;
+  },
+};
 
 /**
  * Returns the css properties of an element.
