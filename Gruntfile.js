@@ -35,7 +35,7 @@ module.exports = function(grunt) {
         src: '**',
         dest: 'chrome-extension.zip',
         router: function (filepath) {
-          return !isIgnored(filepath);
+          return isIgnored(filepath) ? false : filepath;
         },
       }
     },
